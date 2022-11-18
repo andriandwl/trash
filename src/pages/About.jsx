@@ -31,13 +31,14 @@ const About = () => {
         </div>
       </div>
 
-      <section className=" " style={{ backgroundImage: `url(${bg})`, backgroundSize: "cover", backgroundRepeat:'no-repeat',padding:'7rem' }}>
+      <section className="mt-4 " style={{ backgroundImage: `url(${bg})`, backgroundSize: "cover", backgroundRepeat:'no-repeat',padding:'7rem' }}>
         <div className="container ">
           <div className="row ">
             <div className=" mt-5 col-md-12 col-sm-12 col-lg-6 text-start text-black p-5">
+            <h4 className="" style={{fontFamily:'museo'}}>Mari Bersama Mewujudkan Jawa barat Nyaman dan Asri dengan..</h4>
               <div className="col-12 gap-2 d-flex mt-2 justify-content-start">
                 <img className="" src={mark2} alt="mark" style={{ width: "40px", objectFit: "contain" }} />
-                <p className="mt-4">Melestarikan Lingkungan <br />
+                <p className="mt-4">Melestarikan Lingkungan. <br />
                 <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit voluptates nemo ratione.</small></p>
               </div>
 
