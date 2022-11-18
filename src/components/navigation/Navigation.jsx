@@ -35,10 +35,10 @@ function Navigation() {
                     <a
                       className="nav-link active text-light"
                       aria-current="page"
-                      href="/about"
+                      href="/"
                       style={{ fontFamily: "Manrope" }}
                     >
-                      Home
+                      Beranda
                     </a>
                   </li>
                   <li className="nav-item ">
@@ -93,7 +93,7 @@ function Navigation() {
                     <Link
                       className="nav-link active text-light"
                       aria-current="page"
-                      to="/kontak-kami"
+                      to="/tentang-kami"
                       style={{ fontFamily: "Manrope" }}
                     >
                       Tentang Kami
