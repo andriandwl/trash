@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+nav {
+  background-color: #eff5f5;
+}
+.btn-register {
+  border-radius: 10px;
+  background-color: #4dc66f;
+  color: #fff;
+}
+.btn-login {
+  border-radius: 10px;
+  background-color: #4dc66f;
+  color: #fff;
+}
+.btn-register,
+.btn-login:hover {
+  background: linear-gradient(45deg, #5caa47);
+}
+
+.card-login,
+.card-register {
+  box-shadow: 20px 20px 4px rgba(0, 0, 0, 0.25);
+}
+
+.text-about,
+small {
+  font-size: small;
+}

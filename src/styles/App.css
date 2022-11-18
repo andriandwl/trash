@@ -1,0 +1,76 @@
+@font-face {
+  font-family: Manrope;
+  src: url("../assets/font/Manrope-Regular.ttf");
+}
+@font-face {
+  font-family: Museo;
+  src: url("../assets/font/MuseoModerno-Regular.ttf");
+}
+
+@font-face {
+  font-family: Wondersong;
+  src: url("../assets/font/Wondersong.ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: #5caa47;
+}
+
+.logo {
+  font-family: "Wondersong";
+  font-size: 10vh;
+  color: #5caa47;
+}
+.museo {
+  font-family: "Museo";
+  font-size: 32px;
+  color: #5caa47;
+}
+.manrope {
+  font-family: "Manrope";
+  font-size: 16px;
+  color: #5caa47;
+}
+.profile-card-5 {
+  margin-top: 20px;
+}
+.profile-card-5 .btn {
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 7px 20px;
+}
+.profile-card-5 .card-img-block {
+  width: 91%;
+  margin: 0 auto;
+  position: relative;
+  top: -20px;
+}
+.profile-card-5 .card-img-block img {
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.63);
+}
+.profile-card-5 h5 {
+  font-family: "Manrope";
+  color: #4e5e30;
+  font-weight: 600;
+}
+.profile-card-5 p {
+  font-family: "Manrope";
+  font-size: 14px;
+  font-weight: 300;
+}
+.profile-card-5 .btn-primary {
+  background-color: #4e5e30;
+  border-color: #4e5e30;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
