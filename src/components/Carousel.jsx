@@ -44,31 +44,28 @@ export default class Crsl extends Component {
       ],
     };
     return (
-      <div
-        className="mt-5 "
-        style={{
-          margin: "0 10px",
-        }}
-      >
-        <h2 className="text-center">Baca Jurnal</h2>
+      <div className="mt-5 w-75 "style={{position:'absolute', left:'13%'}}>
+        <h2 className="text-center text-dark museo" >
+          Baca Jurnal
+        </h2>
         <Slider {...settings}>
           <div>
-            <img src={clean} className="card-img-top mt-4" alt="..." style={{ width: "12rem" }} />
+            <img src={clean} className="card-img-top mt-4" alt="..." style={{ width: "12rem", cursor:'pointer' }} />
           </div>
           <div>
-            <img src={reduce} className="card-img-top mt-4" alt="..." style={{ width: "12rem" }} />
+            <img src={reduce} className="card-img-top mt-4" alt="..." style={{ width: "12rem", cursor:'pointer' }} />
           </div>
           <div>
-            <img src={recycle} className="card-img-top mt-4" alt="..." style={{ width: "12rem" }} />
+            <img src={recycle} className="card-img-top mt-4" alt="..." style={{ width: "12rem", cursor:'pointer' }} />
           </div>
           <div>
-            <img src={wise} className="card-img-top mt-4" alt="..." style={{ width: "12rem" }} />
+            <img src={wise} className="card-img-top mt-4" alt="..." style={{ width: "12rem", cursor:'pointer' }} />
           </div>
           <div>
-            <img src={clean} className="card-img-top mt-4" alt="..." style={{ width: "12rem" }} />
+            <img src={clean} className="card-img-top mt-4" alt="..." style={{ width: "12rem", cursor:'pointer' }} />
           </div>
           <div>
-            <img src={reuse} className="card-img-top mt-4" alt="..." style={{ width: "12rem" }} />
+            <img src={reuse} className="card-img-top mt-4" alt="..." style={{ width: "12rem", cursor:'pointer' }} />
           </div>
         </Slider>
       </div>
