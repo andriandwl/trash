@@ -5,6 +5,7 @@ import About from "./pages/About";
 import AddEducationPage from "./pages/AddEducationPage";
 import ContactUsPage from "./pages/ContactUsPage";
 import Dashboard from "./pages/Dashboard";
+import DashboardPayment from "./pages/DashboardPayment";
 import EducationPage from "./pages/EducationPage";
 import EdukasiPage from "./pages/EdukasiPage";
 import HomePage from "./pages/HomePage";
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/kontak-kami" element={<ContactUsPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/pembayaran" element={<DashboardPayment />} />
           <Route path="/dashboard/edukasi" element={<EducationPage />} />
           <Route path="/dashboard/users" element={<Users />} />
           <Route
