@@ -96,6 +96,7 @@ function LandingPage() {
                     backgroundColor: "#5caa47",
                     color: "white",
                     padding: "10px",
+                    fontSize: "24px",
                   }}
                 >
                   Pengingat
