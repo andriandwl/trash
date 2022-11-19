@@ -27,8 +27,8 @@ function EdukasiPage () {
       </div>
 
         <div className="row text-center">
-          <div className="col text-start">
-            <h5 style={{ fontFamily: "museo" }}>Yuk baca dulu edukasi tentang sampah...</h5>
+          <div className="col text-start mt-2">
+            <h5 style={{ fontFamily: "museo", marginLeft:"5em" }}>Yuk baca dulu edukasi tentang sampah...</h5>
           </div>
           <div className="container d-flex justify-content-center  ">
             <div className="row">

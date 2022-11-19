@@ -93,7 +93,7 @@ function Navigation() {
                     <Link
                       className="nav-link active text-light"
                       aria-current="page"
-                      to="/kontak-kami"
+                      to="/tentang-kami"
                       style={{ fontFamily: "Manrope" }}
                     >
                       Tentang Kami
