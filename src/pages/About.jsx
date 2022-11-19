@@ -102,7 +102,7 @@ const About = () => {
           <div className="container  d-flex justify-content-center align-content-center mb-4 " style={{ background: `rgba(92, 170, 71, 0.7)`, borderRadius: "80px 80px 0 0" }}>
             <div className="row m-2 ">
               <div className="col-md-12 col-sm-12 col-lg-4 ">
-                <div className="card mx-auto d-block mb-2" style={{ borderRadius: "5%", width: "15rem" }}>
+                <div className="card anim mx-auto d-block mb-2" style={{ borderRadius: "5%", width: "15rem" }}>
                   <div className="d-flex justify-content-center m-1 img-float ">
                     <img src={notif} className="card-img-top mt-4" alt="..." style={{ width: "9rem" }} />
                   </div>
@@ -113,7 +113,7 @@ const About = () => {
                 </div>
               </div>
               <div className="col-md-12 col-sm-12 col-lg-4">
-                <div className="card mx-auto d-block mb-2" style={{ borderRadius: "5%", width: "15rem" }}>
+                <div className="card anim mx-auto d-block mb-2" style={{ borderRadius: "5%", width: "15rem" }}>
                   <div className="d-flex justify-content-center m-1 ">
                     <img src={jadwal} className="card-img-top mb-2  mt-4" alt="..." style={{ width: "8.5rem" }} />
                   </div>
@@ -124,7 +124,7 @@ const About = () => {
                 </div>
               </div>
               <div className="col-md-12 col-sm-12 col-lg-4 ">
-                <div className="card mx-auto d-block mb-2 " style={{ borderRadius: "5%", width: "15rem" }}>
+                <div className="card anim mx-auto d-block mb-2 " style={{ borderRadius: "5%", width: "15rem" }}>
                   <div className="d-flex justify-content-center m-1">
                     <img src={truck} className="card-img-top mt-4" alt="..." style={{ width: "10rem" }} />
                   </div>

@@ -33,28 +33,28 @@ function EdukasiPage () {
           <div className="container d-flex justify-content-center  ">
             <div className="row">
               <div className="col-xl-3 col-md-6 col-sm-12 mt-4 box-media ">
-                <div className="card d-block  mb-2 shadow-lg mx-auto" style={{ borderRadius: "5%", width: "18rem", }}>
+                <div className="card d-block  mb-2 shadow-lg mx-auto anim" style={{ borderRadius: "5%", width: "18rem", }}>
                   <img src={sampah1} className="card-img-top mt-4" alt="..." style={{ width: "10rem" }} />
                 </div>
                 <p>Pentingnya Edukasi pengelolaan sampah</p>
                 <button className="btn btn-success">lihat detail</button>
               </div>
               <div className="col-xl-3 col-md-6 col-sm-12 mt-4 ">
-                <div className="card d-block  mb-2 shadow-lg mx-auto" style={{ borderRadius: "5%", width: "18rem" }}>
+                <div className="card d-block  mb-2 shadow-lg mx-auto anim" style={{ borderRadius: "5%", width: "18rem" }}>
                   <img src={sampah4} className="card-img-top mt-4 p-2" alt="..." style={{ width: "14rem" }} />
                 </div>
                 <p>Pentingnya Edukasi pengelolaan sampah</p>
                 <button className="btn btn-success">lihat detail</button>
               </div>
               <div className="col-xl-3 col-md-6 col-sm-12 mt-4 box-media">
-                <div className="card d-block  mb-2 shadow-lg mx-auto" style={{ borderRadius: "5%", width: "18rem" }}>
+                <div className="card d-block  mb-2 shadow-lg mx-auto anim" style={{ borderRadius: "5%", width: "18rem" }}>
                   <img src={sampah2} className="card-img-top mt-4 " alt="..." style={{ width: "14rem" }} />
                 </div>
                 <p>Pentingnya Edukasi pengelolaan sampah</p>
                 <button className="btn btn-success">lihat detail</button>
               </div>
               <div className="col-xl-3 col-md-6 col-sm-12 mt-4 mr-3 ">
-                <div className="card d-block mb-2 shadow-lg mx-auto" style={{ borderRadius: "5%", width: "18rem" }}>
+                <div className="card d-block mb-2 shadow-lg mx-auto anim" style={{ borderRadius: "5%", width: "18rem" }}>
                   <img src={sampah3} className="card-img-top mt-4 " alt="..." style={{ width: "12rem" }} />
                 </div>
                 <p className="">Pentingnya Edukasi pengelolaan sampah</p>
