@@ -35,10 +35,10 @@ function Navigation() {
                     <a
                       className="nav-link active text-light"
                       aria-current="page"
-                      href="/about"
+                      href="/"
                       style={{ fontFamily: "Manrope" }}
                     >
-                      Home
+                      Beranda
                     </a>
                   </li>
                   <li className="nav-item ">
@@ -63,17 +63,17 @@ function Navigation() {
                     </Link>
                     <ul className="dropdown-menu">
                       <li>
-                        <Link className="dropdown-item" to="/layanan">
+                        <Link className="dropdown-item" to="#penj">
                           Penjadwalan
                         </Link>
                       </li>
                       <li>
-                        <Link className="dropdown-item" to="/layanan">
+                        <Link className="dropdown-item" to="#peng">
                           Pengingat
                         </Link>
                       </li>
                       <li>
-                        <Link className="dropdown-item" to="/layanan">
+                        <Link className="dropdown-item" to="#pemb">
                           Pembayaran
                         </Link>
                       </li>
@@ -93,7 +93,7 @@ function Navigation() {
                     <Link
                       className="nav-link active text-light"
                       aria-current="page"
-                      to="/kontak-kami"
+                      to="/tentang-kami"
                       style={{ fontFamily: "Manrope" }}
                     >
                       Tentang Kami

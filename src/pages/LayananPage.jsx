@@ -14,7 +14,9 @@ function LayananPage() {
             <h1 className="museo text-center mb-5">Layanan Kami</h1>
           </div>
           <div className="col-md-7">
-            <h2 className="featurette-heading fw-normal lh-1">Penjadwalan</h2>
+            <h2 className="featurette-heading fw-normal lh-1" id="penj">
+              Penjadwalan
+            </h2>
             <p className="lead">
               Some great placeholder content for the first featurette here.
               Imagine some exciting prose here.
@@ -27,7 +29,9 @@ function LayananPage() {
 
         <div className="row featurette mb-5">
           <div className="col-md-7 order-md-2">
-            <h2 className="featurette-heading fw-normal lh-1">Pengingat</h2>
+            <h2 className="featurette-heading fw-normal lh-1" id="peng">
+              Pengingat
+            </h2>
             <p className="lead">
               Another featurette? Of course. More placeholder content here to
               give you an idea of how this layout would work with some actual
@@ -41,7 +45,9 @@ function LayananPage() {
 
         <div className="row featurette">
           <div className="col-md-7">
-            <h2 className="featurette-heading fw-normal lh-1">Pembayaran</h2>
+            <h2 className="featurette-heading fw-normal lh-1" id="pemb">
+              Pembayaran
+            </h2>
             <p className="lead">
               And yes, this is the last block of representative placeholder
               content. Again, not really intended to be actually read, simply
