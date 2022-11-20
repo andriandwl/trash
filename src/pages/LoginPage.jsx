@@ -51,10 +51,10 @@ function LoginPage(setToken) {
   return (
     <>
       <Navigation />
-      <section className="" style={{ backgroundColor: "#fff" }}>
+      <section className="my-5" style={{ backgroundColor: "#fff" }}>
         <div className="container me-5 ">
           <div className="row d-flex justify-content-center align-items-center ">
-            <div className="col-lg-12 col-xl-11">
+            <div className="col-lg-12 col-xl-11 col-12">
               <div className="card card-login text-black" style={{ borderRadius: "20px", backgroundColor: "#fff" }}>
                 <div className="card-body p-md-2">
                   <div className="row ">
