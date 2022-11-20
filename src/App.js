@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Auth from "./components/Auth";
 import About from "./pages/About";
 import AddEducationPage from "./pages/AddEducationPage";
+import Auth from "./pages/Auth";
 import ContactUsPage from "./pages/ContactUsPage";
 import Dashboard from "./pages/Dashboard";
 import DashboardPayment from "./pages/DashboardPayment";
@@ -23,8 +23,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/home" element={<HomePage />} />
-          <Route path="/auth" element={<Auth />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/auth" element={<Auth />} />
           <Route path="/layanan" element={<LayananPage />} />
           <Route path="/edukasi" element={<EdukasiPage />} />
           <Route path="/tentang-kami" element={<About />} />

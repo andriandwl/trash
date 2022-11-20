@@ -86,20 +86,7 @@ function LandingPage() {
                     padding: "10px",
                   }}
                 >
-                  Penjadwalan
-                </div>
-              </div>
-              <div className="col-lg-3">
-                <div
-                  className="card-header text-center"
-                  style={{
-                    backgroundColor: "#5caa47",
-                    color: "white",
-                    padding: "10px",
-                    fontSize: "24px",
-                  }}
-                >
-                  Pengingat
+                  <h5 className="card-title">Penjadwalan</h5>
                 </div>
               </div>
               <div className="col-lg-3">
@@ -111,7 +98,19 @@ function LandingPage() {
                     padding: "10px",
                   }}
                 >
-                  Pembayaran
+                  <h5 className="card-title">Pengingat</h5>
+                </div>
+              </div>
+              <div className="col-lg-3">
+                <div
+                  className="card-header text-center"
+                  style={{
+                    backgroundColor: "#5caa47",
+                    color: "white",
+                    padding: "10px",
+                  }}
+                >
+                  <h5 className="card-title">Pembayaran</h5>
                 </div>
               </div>
             </div>
@@ -119,7 +118,6 @@ function LandingPage() {
               <div className="col-lg-3">
                 <div className="card border-light mb-5">
                   <div className="card-body">
-                    <h5 className="card-title">Penjadwalan</h5>
                     <p className="card-text">
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
@@ -130,7 +128,6 @@ function LandingPage() {
               <div className="col-lg-3">
                 <div className="card border-light mb-5">
                   <div className="card-body">
-                    <h5 className="card-title">Pengingat</h5>
                     <p className="card-text">
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
@@ -141,7 +138,6 @@ function LandingPage() {
               <div className="col-lg-3">
                 <div className="card border-light mb-5">
                   <div className="card-body">
-                    <h5 className="card-title">Pembayaran</h5>
                     <p className="card-text">
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.

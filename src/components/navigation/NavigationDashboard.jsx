@@ -22,7 +22,7 @@ function NavigationDashboard() {
                 className="navbar-toggler"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="/navbarSupportedContent"
+                data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent"
                 aria-expanded="false"
                 aria-label="Toggle navigation"
@@ -80,7 +80,10 @@ function NavigationDashboard() {
                         </a>
                       </li>
                       <li>
-                        <Link className="dropdown-item" to="/dashboard/payment">
+                        <Link
+                          className="dropdown-item"
+                          to="/dashboard/pembayaran"
+                        >
                           Pembayaran
                         </Link>
                       </li>

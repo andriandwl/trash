@@ -11,7 +11,12 @@ function LayananPage() {
       <div className="container">
         <div className="row featurette m-4">
           <div className="col-lg-12">
-            <h1 className="museo text-center mb-5">Layanan Kami</h1>
+            <p
+              className="blockquote-footer fw-bold text-dark text-start"
+              style={{ marginTop: "" }}
+            >
+              LAYANAN KAMI
+            </p>
           </div>
           <div className="col-md-7">
             <h2 className="featurette-heading fw-normal lh-1" id="penj">
