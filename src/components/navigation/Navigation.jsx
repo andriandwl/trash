@@ -1,10 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 function Navigation() {
+  // let btnContainer= document.getElementById('navbarSupportedContent')
+  // let btns = btnContainer.getElementsByClassName("nav-link");
+
+  // for (let i = 0; i < btns.length; i++) {
+  // btns[i].addEventListener('click', function () {
+  //   let current = document.getElementsByClassName('active')
+  // current[0].className = current[0].className.replace("active");
+  // this.className += "active";})
+  // }
+
   return (
     <div>
       <div className="row g-0">
-        <div className="col-lg-2 col-md-4 col-sm-12">
+        <div className="col-lg-2 col-md-4 col-sm-12" >
           <p className="logo mt-3 text-center" style={{ color: "#5caa47" }}>
             PiTrash
           </p>
