@@ -51,7 +51,7 @@ function LoginPage(setToken) {
   return (
     <>
       <Navigation />
-      <section className="my-5" style={{ backgroundColor: "#fff" }}>
+      <section className="mb-5" style={{ backgroundColor: "#fff" }}>
         <div className="container me-5 ">
           <div className="row d-flex justify-content-center align-items-center ">
             <div className="col-lg-12 col-xl-11 col-12">
