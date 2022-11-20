@@ -11,6 +11,7 @@ import HomePage from "./pages/HomePage";
 import LandingPage from "./pages/LandingPage";
 import LayananPage from "./pages/LayananPage";
 import LoginPage from "./pages/LoginPage";
+import Profile from "./pages/Profile";
 import RegisterPage from "./pages/RegisterPage";
 import SchdulingPage from "./pages/SchdulingPage";
 import Users from "./pages/Users";
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/edukasi" element={<EducationPage />} />
           <Route path="/dashboard/users" element={<Users />} />
+          <Route path="/profile" element={<Profile />} />
           <Route
             path="/dashboard/tambah-edukasi"
             element={<AddEducationPage />}

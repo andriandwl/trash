@@ -15,7 +15,7 @@ function RegisterPage() {
   });
   // gsap.from(".anim", { duration: 5, x: 0, opacity: 1, delay: 0.5, ease: "back" });
 
-  const BASE_URL = "https://b609-2001-448a-2020-b909-657d-2ead-814c-a815.ap.ngrok.io/api";
+  const BASE_URL = "http://pitrash.masuk.web.id";
 
   const [nm, setNama] = useState("");
   const [eml, setEmail] = useState("");
@@ -30,7 +30,7 @@ function RegisterPage() {
 
     axios
       .post(
-        `${BASE_URL}/register`,
+        `${BASE_URL}/api/register`,
         {
           name: nm,
           phone: telp,
@@ -62,7 +62,7 @@ function RegisterPage() {
       <div className="container me-5">
         <div className="row d-flex justify-content-center align-items-center ">
           <div className="col-lg-12 col-xl-11">
-            <div className="card card-register text-black" style={{ borderRadius: "20px", backgroundColor: "#D5F0C5" }}>
+            <div className="card card-register text-black" style={{ borderRadius: "20px", backgroundColor: "#fff" }}>
               <div className="card-body">
                 <div className="row justify-content-center">
                   <div className="col-md-6 order-2 order-lg-1">
