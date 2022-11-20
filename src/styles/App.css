@@ -107,3 +107,48 @@ nav {
   transform: scale(1.1);
 
 }
+
+.bg-media{
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 10rem;
+}
+.layanan{
+  background: rgba(92, 170, 71, 0.7);
+  border-radius: 80px 80px 0 0;
+}
+@media screen and (max-width: 1200px){
+  .trash{
+    visibility: hidden;
+  }
+}
+@media screen and (max-width: 500px) {
+
+  .bg-media {
+      background-image: none;
+      padding: 0 !important;
+      position: relative;
+      bottom: 12rem;
+
+  }
+  .pohon{
+    visibility: hidden;
+  }
+  .trash{
+    visibility: hidden;
+  }
+  .advice{
+    padding: 0;
+    top: 5rem;
+    position: relative;
+  }
+  .service{
+
+  }
+  .layanan{
+   position: relative;
+   border-radius: 0;
+  bottom: 6.5rem;
+  }
+}

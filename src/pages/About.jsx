@@ -20,7 +20,7 @@ const About = () => {
             TENTANG KAMI
           </p>
 
-          <div className="col col-xl-9 col-12">
+          <div className="col-md-6 col-xl-9 col-sm-12">
             <h3 className="text-black" style={{ fontFamily: "Museo" }}>
               Apa itu PiTrash?
             </h3>
@@ -31,20 +31,21 @@ const About = () => {
               sampah, demi kenyamanan dan kebersihan di lingkungan kehidupan Masyarakat.
             </p>
           </div>
-          <div className="col col-xl-3 col-12 justify-content-right ">
-            <img src={pohon} width="" className="float-end img-fluid " alt="gambar" style={{ opacity: "60%" }} />
+          <div className="col-xl-3 col-md-6 col-sm-12 justify-content-right ">
+
+            <img src={pohon} width="90%" className="float-end img-fluid pohon" alt="gambar" style={{ opacity: "60%" }} />
           </div>
         </div>
       </div>
-
-      <section className=" " style={{ backgroundImage: `url(${bg})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", padding: "10rem"}}>
+      {/* style={{ backgroundImage: `url(${bg})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", padding: "10rem"}} */}
+      <section className="bg-media "style={{ backgroundImage: `url(${bg})`}} >
         <div className="container ">
           <div className="row ">
-            <div className="col  col-12 col-xl-6  text-black mt-5 p-5">
+            <div className="col  col-12 col-xl-6  text-black mt-5 p-5 advice">
               <h4 className="text-center " style={{ fontFamily: "museo" }}>
                 Mari Bersama Mewujudkan Linkungan Nyaman dan Asri dengan..
               </h4>
-              <div className="row">
+
               <div className="col gap-2 d-flex mt-2 " style={{ fontFamily: "Manrope" }}>
                 <img className="" src={mark2} alt="mark" style={{ width: "40px", objectFit: "contain" }} />
                 <p className="mt-4  fw-medium">
@@ -53,8 +54,8 @@ const About = () => {
                   <small>Salah satu contoh sikap bertanggung jawab menjaga lingkungan adalah menjaga kelestarian lingkungan. Meningkatkan pemanfaatan sumber-sumber energi yang enggak akan habis.</small>
                 </p>
               </div>
-              </div>
-              <div className="row">
+
+
               <div className="col gap-2 d-flex mt-2 ">
                 <img className="" src={mark1} alt="mark" style={{ width: "40px", objectFit: "contain" }} />
 
@@ -63,8 +64,8 @@ const About = () => {
                   <small>Menjaga lingkungan dapat dilakukan dengan cara mengurangi sampah, menghemat penggunaan listrik, menghemat penggunaan air, melestarikan hutan, dan melestarikan hewan.</small>
                 </p>
               </div>
-              </div>
-              <div className="row">
+
+
               <div className="col gap-2 d-flex mt-2 ">
                 <img className="" src={mark3} alt="mark" style={{ width: "40px", objectFit: "contain" }} />
 
@@ -74,13 +75,15 @@ const About = () => {
                   <small>Sebagai upaya menjaga kelestarian lingkungan, Anda dapat memisahkan sampah menjadi sampah anorganik, sampah organik, dan sampah kaca atau logam.</small>
                 </p>
               </div>
+
+            </div>
+
+            <div className="col-lg-6 col-md-12 col-sm-12 ">
+              <div className="col-auto  d-flex justify-content-end mt-5">
+                <img className="img-fluid trash" src={trash} alt="" width="" />
               </div>
             </div>
-            <div className="col  col-12 col-xl-6">
-              <div className="col-auto  d-flex justify-content-end">
-                <img className="img-fluid" src={trash} alt="" width="" />
-              </div>
-            </div>
+
           </div>
         </div>
       </section>
@@ -88,12 +91,12 @@ const About = () => {
 
 
       <div className="container ">
-        <div className="row text-center text-black mb-10 ">
-          <h2 className="mt-5" style={{ fontFamily: "museo" }}>
+        <div className="row text-center text-black  ">
+          <h2 clasName="service" style={{ fontFamily: "museo" }}>
             Layanan Kami
           </h2>
 
-          <div className="container  d-flex justify-content-center align-content-center mb-4 " style={{ background: `rgba(92, 170, 71, 0.7)`, borderRadius: "80px 80px 0 0" }}>
+          <div className="container layanan  d-flex justify-content-center align-content-center mb-4 " >
             <div className="row m-2 ">
               <div className="col-md-12 col-sm-12 col-lg-4 ">
                 <div className="card anim mx-auto d-block mb-2" style={{ borderRadius: "5%", width: "15rem" }}>
