@@ -14,7 +14,7 @@ function Navigation() {
   return (
     <div>
       <div className="row g-0">
-        <div className="col-lg-2 col-md-4 col-sm-12" >
+        <div className="col-lg-2 col-md-4 col-sm-12">
           <p className="logo mt-3 text-center" style={{ color: "#5caa47" }}>
             PiTrash
           </p>
@@ -24,7 +24,7 @@ function Navigation() {
             className="navbar navbar-expand-lg"
             style={{ borderRadius: "0px 0px 0px 30px" }}
           >
-            <div className="container-fluid">
+            <div className="container-fluid justify-content-end">
               <button
                 className="navbar-toggler"
                 type="button"
