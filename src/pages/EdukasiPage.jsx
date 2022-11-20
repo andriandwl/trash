@@ -11,13 +11,13 @@ function EdukasiPage () {
     <>
     <Navigation/>
       <div className="container " style={{ marginTop: "50px" }}>
-        <div className="row text-left ">
-          <div className="col-6">
+        <div className="row ">
+          <div className="col-12">
             <p className="blockquote-footer fw-bold text-dark text-start" style={{ marginTop: "" }}>
               EDUKASI
             </p>
             <h1 className="text-dark" style={{fontFamily:'museo'}}>Menjaga Lingkungan</h1>
-            <small className="text-dark">Kebersihan lingkungan merupakan hal yang tak terpisahkan dari kehidupan manusia dan merupakan unsur yang fundamental dalam ilmu kesehatan dan pencegahan.</small>
+            <small className="text-dark">Kebersihan lingkungan merupakan hal yang tak terpisahkan dari kehidupan manusia dan <br /> merupakan unsur yang fundamental dalam ilmu kesehatan dan pencegahan.</small>
           </div>
 
           <div className="col-12 text-center">
@@ -28,7 +28,7 @@ function EdukasiPage () {
 
         <div className="row text-center">
           <div className="col text-start mt-2">
-            <h5 style={{ fontFamily: "museo", marginLeft:"5em" }}>Yuk baca dulu edukasi tentang sampah...</h5>
+            <h5 style={{ fontFamily: "museo", marginLeft:"6em" }}>Yuk baca dulu edukasi tentang sampah...</h5>
           </div>
           <div className="container d-flex justify-content-center  ">
             <div className="row">
@@ -64,6 +64,7 @@ function EdukasiPage () {
 
         </div>
       </div>
+
       <Crsl />
     </>
   );
