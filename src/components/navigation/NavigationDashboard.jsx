@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import account from "../../assets/icons/profiles.png";
-import notifikasi from "../../assets/icons/notificatii.png";
+import notifikasi from "../../assets/icons/notif.png";
 
 function NavigationDashboard() {
   return (
@@ -22,7 +22,7 @@ function NavigationDashboard() {
                 className="navbar-toggler"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="/navbarSupportedContent"
+                data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent"
                 aria-expanded="false"
                 aria-label="Toggle navigation"
@@ -80,9 +80,12 @@ function NavigationDashboard() {
                         </a>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="/">
+                        <Link
+                          className="dropdown-item"
+                          to="/dashboard/pembayaran"
+                        >
                           Pembayaran
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </li>
@@ -106,7 +109,11 @@ function NavigationDashboard() {
                       aria-label="Search"
                     />
                   </form>
-                  <Link data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <Link
+                    className="me-2"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                  >
                     <img
                       src={notifikasi}
                       alt="icon-profile"
@@ -117,7 +124,7 @@ function NavigationDashboard() {
                       }}
                     />
                   </Link>
-                  <Link to="/dashboard">
+                  <Link to="/">
                     <img
                       src={account}
                       alt="icon-profile"

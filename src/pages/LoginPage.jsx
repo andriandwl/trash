@@ -5,12 +5,17 @@ import { Link, useNavigate } from "react-router-dom";
 import login from "../assets/image/pictlogin.png";
 import Navigation from "../components/navigation/Navigation";
 
-function LoginPage() {
+function LoginPage(setToken) {
   const BASE_URL = "http://pitrash.masuk.web.id";
 
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
   const navigate = useNavigate();
+
+  // React.useEffect(() => {
+  //   setAuthedUser();
+  //   setInitializing(false);
+  // }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,9 +33,15 @@ function LoginPage() {
         }
       )
       .then(function (response) {
-        console.log(response.data.data.token);
         localStorage.setItem("accessToken", response.data.data.token);
-        navigate("/");
+        localStorage.setItem("user_id", response.data.data.user.user_id);
+        setToken(response.data.data);
+
+        if (localStorage.getItem("user_id") === "1") {
+          navigate("/dashboard");
+        } else {
+          navigate("/home");
+        }
       })
       .catch(function (error) {
         console.log(error);

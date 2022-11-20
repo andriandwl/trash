@@ -12,13 +12,18 @@ import axios from "axios";
 
 function Dashboard() {
   const [educationPost, setEducationPost] = React.useState([]);
+  const [users, setUsers] = React.useState([]);
+  const [schdule, setSchdule] = React.useState([]);
+
   function getAccessToken() {
-    return localStorage.getItem("accessToken");
+    const tokenString = localStorage.getItem("accessToken");
+    const useToken = JSON.parse(tokenString);
+    return useToken?.token;
   }
 
   const getData = () => {
     axios
-      .get(`https://jcc.brandingyou.id/api/post`, {
+      .get(`http://pitrash.masuk.web.id/api/education`, {
         headers: {
           Authorization: `Bearer ${getAccessToken()}`,
         },
@@ -27,10 +32,37 @@ function Dashboard() {
         setEducationPost(response.data.data);
       });
   };
+  const getAllUser = () => {
+    axios
+      .get(`http://pitrash.masuk.web.id/api/user`, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
+      })
+      .then((response) => {
+        setUsers(response.data.data);
+      });
+  };
+
+  const getSchdule = () => {
+    axios
+      .get(`http://pitrash.masuk.web.id/api/master`, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data.data);
+        setSchdule(response.data.data);
+      });
+  };
 
   React.useEffect(() => {
     getData();
+    getAllUser();
+    getSchdule();
   }, []);
+
   return (
     <div>
       <NavigationDashboard />
@@ -150,7 +182,7 @@ function Dashboard() {
             </div>
 
             {/* Tanggal */}
-            <Pickup />
+            <Pickup schdule={schdule} />
 
             {/* Table */}
             <div className="container">
@@ -172,27 +204,17 @@ function Dashboard() {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>@mdo</td>
-                          <td>0898977282</td>
-                          <td>Bogor</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>@fat</td>
-                          <td>0898977282</td>
-                          <td>Bogor</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry the Bird</td>
-                          <td>@twitter</td>
-                          <td>0898977282</td>
-                          <td>Bogor</td>
-                        </tr>
+                        {users.map((user) => {
+                          return (
+                            <tr key={user.id}>
+                              <th scope="row">{user.id}</th>
+                              <td>{user.name}</td>
+                              <td>{user.email}</td>
+                              <td>{user.phone}</td>
+                              <td>{user.role}</td>
+                            </tr>
+                          );
+                        })}
                       </tbody>
                     </table>
                   </div>
