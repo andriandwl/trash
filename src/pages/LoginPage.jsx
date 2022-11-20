@@ -8,6 +8,7 @@ function LoginPage({ setToken }) {
 
   const [email, setUser] = useState("");
   const [pwd, setPwd] = useState("");
+
   const navigate = useNavigate();
 
   // React.useEffect(() => {
@@ -32,10 +33,11 @@ function LoginPage({ setToken }) {
       )
       .then(function (response) {
         localStorage.setItem("accessToken", response.data.data.token);
-        localStorage.setItem("user_id", response.data.data.user.user_id);
+        localStorage.setItem("name", response.data.data.user.name);
         setToken(response.data.data);
+        console.log(response.data.data);
 
-        if (localStorage.getItem("user_id") === "1") {
+        if (localStorage.getItem("name") === "admin web") {
           navigate("/dashboard");
         } else {
           navigate("/home");
@@ -85,7 +87,6 @@ function LoginPage({ setToken }) {
 
                         <div className="d-flex flex-row align-items-center mb-4">
                           <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
-
                           <input
                             type="password"
                             id="password"

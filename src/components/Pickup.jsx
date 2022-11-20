@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Pickup({ schdule }) {
   return (
     <div className="container">
-      <div className="row gap-4 p-2 g-0 mb-2 justify-content-evenly">
+      <div className="row gap-4 p-2 g-0 mb-2">
         <div className="d-flex flex-wrap justify-content-between align-items-center">
           <h2 className="manrope p-2">Jadwal Pickup</h2>
           <Link to="/dashboard/penjadwalan">
@@ -24,7 +24,7 @@ function Pickup({ schdule }) {
 
         {schdule.map((date) => {
           return (
-            <div className="col-lg-3">
+            <div className="col-lg-3" key={date.id}>
               <div className="card card-margin">
                 <div className="card-header no-border">
                   <h5 className="card-title">{date.day}</h5>
