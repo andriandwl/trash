@@ -25,15 +25,15 @@ function EdukasiPage () {
           </div>
         </div>
       </div>
-      <div className="container d-flex p-5 ">
+
         <div className="row text-center">
           <div className="col text-start">
             <h5 style={{ fontFamily: "museo" }}>Yuk baca dulu edukasi tentang sampah...</h5>
           </div>
-          <div className="container d-flex justify-content-center align-content-center ">
+          <div className="container d-flex justify-content-center  ">
             <div className="row">
               <div className="col-xl-3 col-md-6 col-sm-12 mt-4 box-media ">
-                <div className="card d-block  mb-2 shadow-lg mx-auto" style={{ borderRadius: "5%", width: "18rem" }}>
+                <div className="card d-block  mb-2 shadow-lg mx-auto" style={{ borderRadius: "5%", width: "18rem", }}>
                   <img src={sampah1} className="card-img-top mt-4" alt="..." style={{ width: "10rem" }} />
                 </div>
                 <p>Pentingnya Edukasi pengelolaan sampah</p>
@@ -53,15 +53,15 @@ function EdukasiPage () {
                 <p>Pentingnya Edukasi pengelolaan sampah</p>
                 <button className="btn btn-success">lihat detail</button>
               </div>
-              <div className="col-xl-3 col-md-6 col-sm-12 mt-4  ">
+              <div className="col-xl-3 col-md-6 col-sm-12 mt-4 mr-3 ">
                 <div className="card d-block mb-2 shadow-lg mx-auto" style={{ borderRadius: "5%", width: "18rem" }}>
-                  <img src={sampah3} className="card-img-top mt-4" alt="..." style={{ width: "12rem" }} />
+                  <img src={sampah3} className="card-img-top mt-4 " alt="..." style={{ width: "12rem" }} />
                 </div>
                 <p className="">Pentingnya Edukasi pengelolaan sampah</p>
                 <button className="btn btn-success">lihat detail</button>
               </div>
             </div>
-          </div>
+
         </div>
       </div>
       <Crsl />
