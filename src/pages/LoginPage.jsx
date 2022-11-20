@@ -1,24 +1,29 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import login from "../assets/image/pictlogin.png";
 import Navigation from "../components/navigation/Navigation";
 
-function LoginPage() {
-  const BASE_URL = "https://jcc.brandingyou.id/api";
+function LoginPage(setToken) {
+  const BASE_URL = "http://pitrash.masuk.web.id";
 
-  const [email, setUser] = useState("");
+  const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
+
   const navigate = useNavigate();
+
+  // React.useEffect(() => {
+  //   setAuthedUser();
+  //   setInitializing(false);
+  // }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     axios
       .post(
-        `${BASE_URL}/login`,
+        `${BASE_URL}/api/login`,
         {
-          username: email,
+          email: email,
           password: pwd,
         },
         {
@@ -28,9 +33,15 @@ function LoginPage() {
         }
       )
       .then(function (response) {
-        console.log(response.data.data.token);
         localStorage.setItem("accessToken", response.data.data.token);
-        navigate("/");
+        localStorage.setItem("role", response.data.data.user.role);
+        setToken(response.data.data);
+
+        if (localStorage.getItem("role") === "1") {
+          navigate("/dashboard");
+        } else {
+          navigate("/home");
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -45,7 +56,7 @@ function LoginPage() {
           <div className="container me-5 ">
             <div className="row d-flex justify-content-center align-items-center ">
               <div className="col-lg-12 col-xl-11">
-                <div className="card card-login text-black" style={{ borderRadius: "20px", backgroundColor: "#D5F0C5" }}>
+                <div className="card card-login text-black" style={{ borderRadius: "20px", backgroundColor: "#fff" }}>
                   <div className="card-body p-md-2">
                     <div className="row justify-content-center">
                       <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
@@ -57,16 +68,26 @@ function LoginPage() {
                           <div className="d-flex flex-row align-items-center mb-4">
                             <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
 
-                            <input type="text" id="email" placeholder="Email" className="form-control rounded" autoComplete="off" onChange={(e) => setUser(e.target.value)} value={email} required style={{ backgroundColor: "#fff" }} />
+                              <input
+                            type="text"
+                            id="email"
+                            placeholder="Email"
+                            className="form-control rounded"
+                            autoComplete="off"
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                            required
+                            style={{ backgroundColor: "#fff" }}
+                          />
                           </div>
 
-                          <div className="d-flex flex-row align-items-center mb-2">
+                          <div className="d-flex flex-row align-items-center mb-4">
                             <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
 
-                            <input type="password" id="password" placeholder="Password" className="form-control rounded" onChange={(e) => setPwd(e.target.value)} value={pwd} required style={{ backgroundColor: "#fff" }} />
+                            <input type="password" id="password" placeholder="Password" className="form-control rounded" onChange={(e) => setPwd(e.target.value)} value={pwd}  style={{ backgroundColor: "#fff" }} />
                           </div>
 
-                          <div className="form-check d-flex justify-content-end mb-4">
+                          <div className="form-check d-flex justify-content-end">
                             <label className="form-check-label fw-bold" htmlFor="form2Example3">
                               Belum punya akun?
                               <Link to="/register" style={{ textDecoration: "none" }}>

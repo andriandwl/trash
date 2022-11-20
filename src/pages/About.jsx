@@ -14,7 +14,7 @@ const About = () => {
   return (
     <>
       <Navigation />
-      <div className="container top-container ">
+      <div className=" container top-container h-100 ">
         <div className="row text-left mt-lg-3">
           <p className="blockquote-footer fw-bold text-dark text-start" style={{ marginTop: "" }}>
             TENTANG KAMI
@@ -22,10 +22,10 @@ const About = () => {
 
           <div className="col-md-6 col-xl-9 col-sm-12">
             <h3 className="text-black" style={{ fontFamily: "Museo" }}>
-              Apa itu PiTrash?
+             Apa itu PiTrash?
             </h3>
             <p style={{ fontFamily: "manrope" }}>
-              Sebuah web dan mobile aplikasi yang ditujukan untuk penjadwalan & pengambilan sampah yang akan berguna bagi masyarakat. <br />
+              PiTrash Sebuah web dan mobile aplikasi yang ditujukan untuk penjadwalan & pengambilan sampah yang akan berguna bagi masyarakat.
               Fokus kami mengembangkan web dan aplikasi mobile untuk membantu masyarakat Jawa barat, dan untuk saat ini lingkupnya masih wilayah Kota Banjar, dimana wilayah tersebut masih kurang efektif dan efisien dalam pengambilan sampah,
               di wilayah tersebut masih manual dan kurang terdigitalisasi, untuk itu kami memberikan solusi dan terobosan untuk mempermudah dan meng-efektifkan pengerjaan tersebut, dan memberikan edukasi untuk lebih peduli terhadap masalah
               sampah, demi kenyamanan dan kebersihan di lingkungan kehidupan Masyarakat.

@@ -1,7 +1,30 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import NavigationDashboard from "../components/navigation/NavigationDashboard";
 
 function Users() {
+  const [users, setUsers] = useState([]);
+
+  function getAccessToken() {
+    const tokenString = localStorage.getItem("accessToken");
+    const useToken = JSON.parse(tokenString);
+    return useToken?.token;
+  }
+  const getAllUser = () => {
+    axios
+      .get(`http://pitrash.masuk.web.id/api/user`, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
+      })
+      .then((response) => {
+        setUsers(response.data.data);
+        console.log(response.data.data);
+      });
+  };
+  useEffect(() => {
+    getAllUser();
+  }, []);
   return (
     <div>
       <NavigationDashboard />
@@ -37,38 +60,28 @@ function Users() {
         </div>
         <div className="col-lg-9">
           <div className="container">
-            <table class="table table-success table-striped">
+            <table className="table table-success table-striped">
               <thead>
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Nama</th>
                   <th scope="col">Email</th>
                   <th scope="col">Phone Number</th>
-                  <th scope="col">Alamat</th>
+                  <th scope="col">Role</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>@mdo</td>
-                  <td>0898977282</td>
-                  <td>Bogor</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>@fat</td>
-                  <td>0898977282</td>
-                  <td>Bogor</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>0898977282</td>
-                  <td>Bogor</td>
-                </tr>
+                {users.map((user) => {
+                  return (
+                    <tr key={user.id}>
+                      <th scope="row">{user.id}</th>
+                      <td>{user.name}</td>
+                      <td>{user.email}</td>
+                      <td>{user.phone}</td>
+                      <td>{user.role}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

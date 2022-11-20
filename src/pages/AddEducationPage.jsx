@@ -10,12 +10,14 @@ function AddEducationPage() {
   const [image, setImage] = React.useState("");
 
   function getAccessToken() {
-    return localStorage.getItem("accessToken");
+    const tokenString = localStorage.getItem("accessToken");
+    const useToken = JSON.parse(tokenString);
+    return useToken?.token;
   }
 
   const getData = () => {
     axios
-      .get(`https://jcc.brandingyou.id/api/post`, {
+      .get(`http://pitrash.masuk.web.id/api/education`, {
         headers: {
           Authorization: `Bearer ${getAccessToken()}`,
         },
@@ -31,21 +33,16 @@ function AddEducationPage() {
 
   const AddEducationPage = () => {
     const formDataEdit = new FormData();
-    formDataEdit.append("image", image);
     formDataEdit.append("title", title);
     formDataEdit.append("content", content);
+    formDataEdit.append("image", image);
     axios
-      .post(
-        `https://b609-2001-448a-2020-b909-657d-2ead-814c-a815.ap.ngrok.io/api/education/create`,
-        formDataEdit,
-        {
-          headers: {
-            Authorization: `Bearer ${getAccessToken()}`,
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-        }
-      )
+      .post(`http://pitrash.masuk.web.id/api/education/create`, formDataEdit, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+          Accept: "application/json",
+        },
+      })
       .then(function (response) {
         getData();
         setTitle("");
@@ -115,14 +112,14 @@ function AddEducationPage() {
                       aria-label="Upload"
                       accept=".jpg, .jpeg, .png"
                     />
-                    <button
-                      className="btn btn-outline-secondary"
-                      type="submit"
-                      id="inputGroupFileAddon04"
-                    >
-                      Button
-                    </button>
                   </div>
+                  <button
+                    className="btn btn-outline-secondary"
+                    type="submit"
+                    id="inputGroupFileAddon04"
+                  >
+                    Button
+                  </button>
                 </form>
               </div>
             </div>

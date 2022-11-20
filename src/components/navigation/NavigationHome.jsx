@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-function Navigation() {
 
+function NavigationHome() {
   return (
     <div>
       <div className="row g-0">
-        <div className="col-lg-2 col-md-4 col-sm-12" >
+        <div className="col-lg-2 col-md-4 col-sm-12">
           <p className="logo mt-3 text-center" style={{ color: "#5caa47" }}>
             PiTrash
           </p>
@@ -36,7 +36,7 @@ function Navigation() {
                     <a
                       className="nav-link active text-light"
                       aria-current="page"
-                      href="/"
+                      href="/home"
                       style={{ fontFamily: "Manrope" }}
                     >
                       Beranda
@@ -101,22 +101,16 @@ function Navigation() {
                     </Link>
                   </li>
                 </ul>
-                <div>
-                  <Link className="me-2" to="/dashboard">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="25"
-                      height="25"
-                      fill="currentColor"
-                      className="bi bi-app-indicator"
-                      style={{ color: "white" }}
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1H5.5z" />
-                      <path d="M16 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                    </svg>
+                <div className="d-flex">
+                  <Link
+                    className="nav-link active text-light me-2"
+                    aria-current="page"
+                    to="/tentang-kami"
+                    style={{ fontFamily: "Manrope" }}
+                  >
+                    Andrian
                   </Link>
-                  <Link to="/auth">
+                  <Link to="/home">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="30"
@@ -139,4 +133,4 @@ function Navigation() {
   );
 }
 
-export default Navigation;
+export default NavigationHome;
