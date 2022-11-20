@@ -33,11 +33,10 @@ function LoginPage({ setToken }) {
       )
       .then(function (response) {
         localStorage.setItem("accessToken", response.data.data.token);
-        localStorage.setItem("name", response.data.data.user.name);
+        localStorage.setItem("role", response.data.data.user.role);
         setToken(response.data.data);
-        console.log(response.data.data);
 
-        if (localStorage.getItem("name") === "admin web") {
+        if (localStorage.getItem("role") === "1") {
           navigate("/dashboard");
         } else {
           navigate("/home");
