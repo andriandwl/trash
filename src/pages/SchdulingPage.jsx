@@ -1,14 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavigationDashboard from "../components/navigation/NavigationDashboard";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import axios from "axios";
 
 function SchdulingPage() {
   const [date, setDate] = React.useState(new Date());
+  const [master, setMaster] = React.useState([]);
 
   const onChange = (date) => {
     setDate(date);
   };
+
+  function getAccessToken() {
+    const tokenString = localStorage.getItem("accessToken");
+    const useToken = JSON.parse(tokenString);
+    return useToken?.token;
+  }
+
+  const getDataMaster = () => {
+    axios
+      .get(`http://pitrash.masuk.web.id/api/master`, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data.data);
+        setMaster(response.data.data);
+      });
+  };
+  useEffect(() => {
+    getDataMaster();
+  }, []);
+
   return (
     <div>
       <NavigationDashboard />
@@ -33,35 +58,41 @@ function SchdulingPage() {
           <div className="container">
             <div className="row">
               <div className="col-12">
-                <div className="card card-margin">
-                  <div className="card-header no-border">
-                    <h5 className="card-title">SUN</h5>
-                  </div>
-                  <div className="card-body pt-0">
-                    <div className="widget-49">
-                      <div className="widget-49-title-wrapper">
-                        <div className="widget-49-date-primary">
-                          <span className="widget-49-date-day">09</span>
-                          <span className="widget-49-date-month">apr</span>
-                        </div>
-                        <div className="widget-49-meeting-info">
-                          <span className="widget-49-pro-title">Pickup</span>
-                          <span className="widget-49-meeting-time">
-                            Pukul 11:31:11
-                          </span>
-                        </div>
+                {master.map((mas) => {
+                  return (
+                    <div className="card card-margin">
+                      <div className="card-header no-border">
+                        <h5 className="card-title">{mas.day}</h5>
                       </div>
-                      <div className="widget-49-meeting-action">
-                        <a
-                          href="/"
-                          className="btn btn-sm btn-flash-border-primary"
-                        >
-                          View All
-                        </a>
+                      <div className="card-body pt-0">
+                        <div className="widget-49">
+                          <div className="widget-49-title-wrapper">
+                            <div className="widget-49-date-primary">
+                              <span className="widget-49-date-day">09</span>
+                              <span className="widget-49-date-month">apr</span>
+                            </div>
+                            <div className="widget-49-meeting-info">
+                              <span className="widget-49-pro-title">
+                                Pickup
+                              </span>
+                              <span className="widget-49-meeting-time">
+                                {mas.created_at}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="widget-49-meeting-action">
+                            <a
+                              href="/"
+                              className="btn btn-sm btn-flash-border-primary"
+                            >
+                              View All
+                            </a>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
+                  );
+                })}
               </div>
             </div>
           </div>

@@ -3,12 +3,12 @@ import React from "react";
 import section1 from "../assets/image/home.png";
 import edukasi1 from "../assets/image/edukasi-1.jpg";
 import store from "../assets/image/store.png";
-import Navigation from "../components/navigation/Navigation";
+import NavigationHome from "../components/navigation/NavigationHome";
 // import { Link } from "react-router-dom";
 function HomePage() {
   return (
     <div>
-      <Navigation />
+      <NavigationHome />
       <main>
         <div className="row g-0">
           <div className="col-lg-12 text-center">

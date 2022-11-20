@@ -11,7 +11,7 @@ function EducationPage() {
 
   const getData = () => {
     axios
-      .get(`https://jcc.brandingyou.id/api/post`, {
+      .get(`http://pitrash.masuk.web.id/api/education`, {
         headers: {
           Authorization: `Bearer ${getAccessToken()}`,
         },
