@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import login from "../assets/image/pictlogin.png";
+import Navigation from "../components/navigation/Navigation";
 
 function LoginPage(setToken) {
   const BASE_URL = "http://pitrash.masuk.web.id";
@@ -73,7 +74,7 @@ function LoginPage(setToken) {
                             placeholder="Email"
                             className="form-control rounded"
                             autoComplete="off"
-                            onChange={(e) => setUser(e.target.value)}
+                            onChange={(e) => setEmail(e.target.value)}
                             value={email}
                             required
                             style={{ backgroundColor: "#fff" }}
