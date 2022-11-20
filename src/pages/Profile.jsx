@@ -5,7 +5,7 @@ const Profile = () => {
   return (
     <>
     <Navigation/>
-    <section className="">
+    <section className="uppage">
       <div className="container bg-light">
         <div className="row">
           <div className="col-lg-12 mb-4 mb-sm-5">
