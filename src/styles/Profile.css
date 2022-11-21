@@ -17,9 +17,9 @@
 }
 
 /* .uppage {
-    padding: 100px 0;
-    overflow: hidden;
-    background: #fff;
+  padding: 100px 0;
+  overflow: hidden;
+  background: #fff;
 } */
 .mb-2-3,
 .my-2-3 {
@@ -34,9 +34,7 @@
   position: relative;
   display: inline-block;
 }
-.text-primary {
-  color: #ceaa4d !important;
-}
+
 .text-secondary {
   color: #15395a !important;
 }

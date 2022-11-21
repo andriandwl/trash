@@ -13,9 +13,9 @@ function RegisterPage() {
     delay: 2,
     text: "Orang Bijak Tidak Buang Sampah Sembarangan",
   });
-  // gsap.from(".anim", { duration: 5, x: 0, opacity: 1, delay: 0.5, ease: "back" });
+  //gsap.from(".anim", { duration: 5, x: 0, opacity: 1, delay: 0.5, ease: "back" });
 
-  const BASE_URL = "http://pitrash.masuk.web.id/api";
+  const BASE_URL = "http://pitrash.masuk.web.id";
 
   const [nm, setNama] = useState("");
   const [eml, setEmail] = useState("");
@@ -30,7 +30,7 @@ function RegisterPage() {
 
     axios
       .post(
-        `${BASE_URL}/register`,
+        `${BASE_URL}/api/register`,
         {
           name: nm,
           phone: telp,
@@ -67,7 +67,7 @@ function RegisterPage() {
             <div className="col-lg-12 col-xl-11">
               <div
                 className="card card-register text-black"
-                style={{ borderRadius: "20px", backgroundColor: "#D5F0C5" }}
+                style={{ borderRadius: "20px", backgroundColor: "#fff" }}
               >
                 <div className="card-body">
                   <div className="row justify-content-center">
