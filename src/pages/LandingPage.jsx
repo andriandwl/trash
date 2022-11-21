@@ -2,7 +2,7 @@ import React from "react";
 import Navigation from "../components/navigation/Navigation";
 
 import section1 from "../assets/image/section-1.png";
-import section2 from "../assets/image/2.png";
+import section2 from "../assets/image/section-2.jpg";
 import edukasi1 from "../assets/image/edukasi-1.jpg";
 import store from "../assets/image/store.png";
 
@@ -65,9 +65,8 @@ function LandingPage() {
                   </button>
                 </div>
               </div>
-              <div className="col-lg-2 col-md-0 col-sm-0"></div>
-              <div className="col-lg-4 col-md-6 col-sm-12 ">
-                <img src={section2} alt="section2" width="w-100" />
+              <div className="col-lg-6 col-md-6 col-sm-12 text-center my-5">
+                <img src={section2} alt="section2" width="400vh" />
               </div>
             </div>
           </div>
@@ -117,30 +116,34 @@ function LandingPage() {
             <div className="row g-0 justify-content-center gap-3">
               <div className="col-lg-3">
                 <div className="card border-light mb-5">
-                  <div className="card-body">
+                  <div className="card-body" style={{ height: "30vh" }}>
                     <p className="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
+                      Penjadwalan, memberikan cara yang efisien untuk
+                      menjadwalkan pembayaran dan pickup untuk aktivitas
+                      layanan. Mempertimbangkan kesiapan pengumpulan sampah dan
+                      perlengkapan untuk merencanakan jadwal yang sesuai.
                     </p>
                   </div>
                 </div>
               </div>
               <div className="col-lg-3">
                 <div className="card border-light mb-5">
-                  <div className="card-body">
+                  <div className="card-body" style={{ height: "30vh" }}>
                     <p className="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
+                      Bisa dikatakan sebagai aplikasi yang berfungsi untuk
+                      memberi tahu pada hari/waktu itu ada sebuah kegiatan atau
+                      hal yang harus dilakukan
                     </p>
                   </div>
                 </div>
               </div>
               <div className="col-lg-3">
                 <div className="card border-light mb-5">
-                  <div className="card-body">
+                  <div className="card-body" style={{ height: "30vh" }}>
                     <p className="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
+                      Layanan Pembayaran adalah payment service yaitu bentuk
+                      layanan yang melaksanakan pesan atau perintah untuk
+                      melakukan pembayaran
                     </p>
                   </div>
                 </div>
