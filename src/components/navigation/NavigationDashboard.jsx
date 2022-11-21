@@ -17,7 +17,7 @@ function NavigationDashboard() {
             className="navbar navbar-expand-lg"
             style={{ borderRadius: "0px 0px 0px 30px" }}
           >
-            <div className="container-fluid">
+            <div className="container-fluid justify-content-end">
               <button
                 className="navbar-toggler"
                 type="button"
