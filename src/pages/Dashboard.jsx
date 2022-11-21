@@ -13,9 +13,11 @@ import axios from "axios";
 function Dashboard() {
   const [educationPost, setEducationPost] = React.useState([]);
   const [users, setUsers] = React.useState([]);
-  const [schdule, setSchdule] = React.useState([]);
+  const [history, setHistory] = React.useState([]);
+  const [incoming, setIncoming] = React.useState([]);
 
   const [image, setImage] = React.useState("");
+  const [poster, setPoster] = React.useState([]);
 
   function getAccessToken() {
     const tokenString = localStorage.getItem("accessToken");
@@ -34,6 +36,7 @@ function Dashboard() {
         setEducationPost(response.data.data);
       });
   };
+
   const getAllUser = () => {
     axios
       .get(`http://pitrash.masuk.web.id/api/user`, {
@@ -48,22 +51,23 @@ function Dashboard() {
 
   const getSchdule = () => {
     axios
-      .get(`http://pitrash.masuk.web.id/api/master`, {
+      .get(`http://pitrash.masuk.web.id/api/schedule`, {
         headers: {
           Authorization: `Bearer ${getAccessToken()}`,
         },
       })
       .then((response) => {
-        console.log(response.data.data);
-        setSchdule(response.data.data);
+        setHistory(response.data.data.history);
+        setIncoming(response.data.data.incoming);
       });
   };
 
-  const addPoster = () => {
+  const addPoster = (e) => {
+    e.preventDefault();
     const formDataEdit = new FormData();
     formDataEdit.append("image", image);
     axios
-      .post(`http://127.0.0.1:8000/api/poster/create`, formDataEdit, {
+      .post(`http://pitrash.masuk.web.id/api/poster/create`, formDataEdit, {
         headers: {
           Authorization: `Bearer ${getAccessToken()}`,
           Accept: "application/json",
@@ -76,10 +80,26 @@ function Dashboard() {
         console.log(error);
       });
   };
+
+  const getPoster = () => {
+    axios
+      .get(`http://pitrash.masuk.web.id/api/poster`, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+          Accept: "application/json",
+        },
+      })
+      .then((response) => {
+        setPoster(response.data.data);
+        console.log(response.data.data);
+        getData();
+      });
+  };
   React.useEffect(() => {
     getData();
     getAllUser();
     getSchdule();
+    getPoster();
   }, []);
 
   return (
@@ -207,10 +227,10 @@ function Dashboard() {
             </div>
 
             {/* Tanggal */}
-            <Pickup schdule={schdule} />
+            <Pickup history={history} incoming={incoming} />
 
             <div className="container">
-              <div className="row g-0">
+              <div className="row g-0 mb-5 justify-content-center">
                 <div className="d-flex flex-wrap justify-content-between align-items-center">
                   <h2 className="manrope p-2">Poster</h2>
                   <button
@@ -232,6 +252,34 @@ function Dashboard() {
                     </svg>
                   </button>
                 </div>
+                {poster.map((post) => {
+                  return (
+                    <div
+                      key={post.id}
+                      className="col-lg-4 mt-4 col-md-12 col-sm-12"
+                    >
+                      <div
+                        className="card profile-card-5"
+                        style={{
+                          boxShadow: "5px 5px 4px rgba(0, 0, 0, 0.25)",
+                        }}
+                      >
+                        <div
+                          className="card-img-block "
+                          style={{
+                            boxShadow: "5px 5px 4px rgba(0, 0, 0, 0.25)",
+                          }}
+                        >
+                          <img
+                            className="card-img-top"
+                            src={post.image}
+                            alt="Card"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 

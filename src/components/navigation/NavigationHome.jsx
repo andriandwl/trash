@@ -108,7 +108,7 @@ function NavigationHome() {
                     to="/tentang-kami"
                     style={{ fontFamily: "Manrope" }}
                   >
-                    Andrian
+                    {localStorage.getItem("name")}
                   </Link>
                   <Link to="/profile">
                     <svg

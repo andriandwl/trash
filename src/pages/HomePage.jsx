@@ -1,14 +1,66 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import section1 from "../assets/image/home.png";
 import edukasi1 from "../assets/image/edukasi-1.jpg";
 import store from "../assets/image/store.png";
 import NavigationHome from "../components/navigation/NavigationHome";
+import axios from "axios";
+import { Helmet } from "react-helmet-async";
+import Navigation from "../components/navigation/Navigation";
 // import { Link } from "react-router-dom";
+
 function HomePage() {
+  const [schdule, setSchdule] = React.useState([]);
+  const [education, setEducationPost] = React.useState([]);
+
+  function getAccessToken() {
+    const tokenString = localStorage.getItem("accessToken");
+    const useToken = JSON.parse(tokenString);
+    return useToken?.token;
+  }
+
+  const getSchdule = () => {
+    axios
+      .get(`http://pitrash.masuk.web.id/api/schedule`, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
+      })
+      .then((response) => {
+        setSchdule(response.data.data);
+      });
+  };
+  const getData = () => {
+    axios
+      .get(`http://pitrash.masuk.web.id/api/education`, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
+      })
+      .then((response) => {
+        setEducationPost(response.data.data);
+      });
+  };
+
+  useEffect(() => {
+    getData();
+    getSchdule();
+  }, []);
+
   return (
     <div>
-      <NavigationHome />
+      <Helmet>
+        <title>Pi Trash</title>
+        <meta
+          name="description"
+          content="Beginner friendly page for learning React Helmet."
+        />
+      </Helmet>
+      {localStorage.getItem("name") === "admin" ? (
+        <Navigation />
+      ) : (
+        <NavigationHome />
+      )}
       <main>
         <div className="row g-0">
           <div className="col-lg-12 text-center">
@@ -31,18 +83,18 @@ function HomePage() {
         <div className="col-lg-12">
           <div className="container">
             <div className="row g-0 overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 pb-5 rounded-5">
-              <div className="col-lg-12 col-md-6 col-sm-12  p-4">
+              <div className="col-lg-12 col-md-6 col-sm-12 p-4">
                 <h3 className="mb-5 museo text-center">Pengingat</h3>
               </div>
               <div className="row g-0 gap-2 justify-content-center">
-                <div className="col-lg-7">
+                <div className="col-lg-7 card-group">
                   <div className="card border-light mb-5">
                     <div
                       className="card-header"
                       style={{ backgroundColor: "#5caa47", color: "white" }}
                     ></div>
                     <div className="card-body">
-                      <p className="card-text">
+                      <p className="card-text text-center">
                         Pengambilan sampah akan dilakukan pada hari Minggu
                       </p>
                     </div>
@@ -51,7 +103,7 @@ function HomePage() {
                 <div className="col-lg-2">
                   <div className="card border-light mb-5">
                     <div
-                      className="card-header text-center"
+                      className="card-header"
                       style={{
                         backgroundColor: "#5caa47",
                         color: "white",
@@ -59,11 +111,16 @@ function HomePage() {
                         fontSize: "16px",
                       }}
                     >
-                      10 MEI 2022
+                      {schdule
+                        .filter((item, idx) => item.Category === "Pembayaran")
+                        .map((pay) => {
+                          return (
+                            <p className="card-title text-center">{pay.Date}</p>
+                          );
+                        })}
                     </div>
                     <div className="card-body">
-                      <h5 className="card-title">Jadwal Pickup</h5>
-                      <p className="card-text"></p>
+                      <p className="card-title text-center">Jadwal Pickup</p>
                     </div>
                   </div>
                 </div>
@@ -90,7 +147,7 @@ function HomePage() {
                       padding: "10px",
                     }}
                   >
-                    Tagihan selanjutnya
+                    Waktu Pembayaran
                   </div>
                 </div>
                 <div className="col-lg-3">
@@ -102,7 +159,7 @@ function HomePage() {
                       padding: "10px",
                     }}
                   >
-                    Total tagihan
+                    Batas Waktu
                   </div>
                 </div>
               </div>
@@ -110,33 +167,37 @@ function HomePage() {
                 <div className="col-lg-3">
                   <div className="card border-light mb-5">
                     <div className="card-body">
-                      <h5 className="card-title">Penjadwalan</h5>
-                      <p className="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content.
-                      </p>
+                      <h5 className="card-title text-center">Rp. 30.000</h5>
                     </div>
                   </div>
                 </div>
                 <div className="col-lg-3">
                   <div className="card border-light mb-5">
                     <div className="card-body">
-                      <h5 className="card-title">Penjadwalan</h5>
-                      <p className="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content.
-                      </p>
+                      {schdule
+                        .filter((item) => item.Category === "Pembayaran")
+                        .map((pay) => {
+                          return (
+                            <h5 key={pay.id} className="card-title text-center">
+                              {pay.Date}
+                            </h5>
+                          );
+                        })}
                     </div>
                   </div>
                 </div>
                 <div className="col-lg-3">
                   <div className="card border-light mb-5">
                     <div className="card-body">
-                      <h5 className="card-title">Penjadwalan</h5>
-                      <p className="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content.
-                      </p>
+                      {schdule
+                        .filter((item) => item.Category === "Pembayaran")
+                        .map((pay) => {
+                          return (
+                            <h5 key={pay.id} className="card-title text-center">
+                              {pay[`Due Date`]}
+                            </h5>
+                          );
+                        })}
                     </div>
                   </div>
                 </div>
@@ -149,50 +210,25 @@ function HomePage() {
           <div className="col-lg-12 text-center museo">
             <p>Edukasi</p>
           </div>
-          <div className="row g-0">
-            <div className="col-lg-4 mt-4">
-              <div className="card profile-card-5">
-                <div className="card-img-block">
-                  <img className="card-img-top" src={edukasi1} alt="Card" />
-                </div>
-                <div className="card-body pt-0">
-                  <h5 className="card-title">Reuse</h5>
-                  <p className="card-text">
-                    Reuse berarti menggunakan kembali sampah yang masih dapat
-                    digunakan untuk fungsi yang sama ataupun fungsi lainnya.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 mt-4">
-              <div className="card profile-card-5">
-                <div className="card-img-block">
-                  <img className="card-img-top" src={edukasi1} alt="Card" />
-                </div>
-                <div className="card-body pt-0">
-                  <h5 className="card-title">Reduce</h5>
-                  <p className="card-text">
-                    Reduce berarti mengurangi segala sesuatu yang mengakibatkan
-                    sampah menjadi banyak
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-4 mt-4">
-              <div className="card profile-card-5">
-                <div className="card-img-block">
-                  <img className="card-img-top" src={edukasi1} alt="Card" />
-                </div>
-                <div className="card-body pt-0">
-                  <h5 className="card-title">Recycle</h5>
-                  <p className="card-text">
-                    Recycle berarti mengolah kembali (daur ulang) sampah menjadi
-                    barang atau produk baru yang bermanfaat.
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div className="row g-0 gap-3 justify-content-center card-group">
+            {education
+              .filter((item, idx) => idx < 3)
+              .map((edu) => {
+                return (
+                  <div className="card profile-card-5">
+                    <div className="card-img-block">
+                      <img
+                        className="card-img-top"
+                        src={edu.image}
+                        alt="Card"
+                      />
+                    </div>
+                    <div className="card-body pt-0">
+                      <h5 className="card-title">{edu.title}</h5>
+                    </div>
+                  </div>
+                );
+              })}
           </div>
         </div>
       </main>

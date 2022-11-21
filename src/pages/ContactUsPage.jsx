@@ -1,10 +1,15 @@
 import React from "react";
 import Navigation from "../components/navigation/Navigation";
+import NavigationHome from "../components/navigation/NavigationHome";
 
 function ContactUsPage() {
   return (
     <div>
-      <Navigation />
+      {localStorage.getItem("name") === "admin" ? (
+        <Navigation />
+      ) : (
+        <NavigationHome />
+      )}
       <div className="container">
         <div>
           <h2 className="museo text-center mb-5">Kontak Kami</h2>

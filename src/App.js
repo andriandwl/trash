@@ -1,4 +1,5 @@
 import React from "react";
+import { HelmetProvider } from "react-helmet-async";
 import { Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import AddEducationPage from "./pages/AddEducationPage";
@@ -12,17 +13,18 @@ import HomePage from "./pages/HomePage";
 import LandingPage from "./pages/LandingPage";
 import LayananPage from "./pages/LayananPage";
 import LoginPage from "./pages/LoginPage";
+import ProfilePage from "./pages/ProfilePage";
 import RegisterPage from "./pages/RegisterPage";
 import SchdulingPage from "./pages/SchdulingPage";
 import Users from "./pages/Users";
 
 const App = () => {
   return (
-    <div>
+    <HelmetProvider>
       <main>
         <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/home" element={<HomePage />} />
+          <Route exact path="/" element={<LandingPage />} />
+          <Route exact path="/home" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/layanan" element={<LayananPage />} />
@@ -30,6 +32,7 @@ const App = () => {
           <Route path="/tentang-kami" element={<About />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/kontak-kami" element={<ContactUsPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/pembayaran" element={<DashboardPayment />} />
           <Route path="/dashboard/edukasi" element={<EducationPage />} />
@@ -42,7 +45,7 @@ const App = () => {
         </Routes>
       </main>
       <footer></footer>
-    </div>
+    </HelmetProvider>
   );
 };
 

@@ -5,10 +5,19 @@ import section1 from "../assets/image/section-1.png";
 import section2 from "../assets/image/section-2.jpg";
 import edukasi1 from "../assets/image/edukasi-1.jpg";
 import store from "../assets/image/store.png";
+import { Helmet } from "react-helmet-async";
 
 function LandingPage() {
   return (
     <div>
+      <Helmet>
+        <title>Pi Trash</title>
+        <link rel="icon" href="../assets/image/logor.png"></link>
+        <meta
+          name="description"
+          content="Beginner friendly page for learning React Helmet."
+        />
+      </Helmet>
       <Navigation />
       <main>
         <div className="row g-0">
@@ -155,7 +164,7 @@ function LandingPage() {
               <p>Edukasi</p>
             </div>
             <div className="row g-0">
-              <div className="col-lg-4 mt-4">
+              <div className="col-lg-4 mt-4 card-group">
                 <div className="card profile-card-5">
                   <div className="card-img-block">
                     <img className="card-img-top" src={edukasi1} alt="Card" />
@@ -169,7 +178,7 @@ function LandingPage() {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-4 mt-4">
+              <div className="col-lg-4 mt-4 card-group">
                 <div className="card profile-card-5">
                   <div className="card-img-block">
                     <img className="card-img-top" src={edukasi1} alt="Card" />
@@ -184,7 +193,7 @@ function LandingPage() {
                 </div>
               </div>
 
-              <div className="col-lg-4 mt-4">
+              <div className="col-lg-4 mt-4 card-group">
                 <div className="card profile-card-5">
                   <div className="card-img-block">
                     <img className="card-img-top" src={edukasi1} alt="Card" />
