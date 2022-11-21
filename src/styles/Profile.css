@@ -34,9 +34,7 @@ body{margin-top:20px;}
     position: relative;
     display: inline-block;
 }
-.text-primary {
-    color: #ceaa4d !important;
-}
+
 .text-secondary {
     color: #15395A !important;
 }
