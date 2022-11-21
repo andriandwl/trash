@@ -16,9 +16,9 @@ function EditProfile() {
         <IconEdit /> Edit profile
       </Button>
 
-      <Modal show={show} onHide={handleClose} style={{fontFamily:'Manrope'}}>
+      <Modal show={show} onHide={handleClose} style={{ fontFamily: "Manrope" }}>
         <Modal.Header closeButton>
-          <Modal.Title  style={{fontFamily:'Museo'}}>Edit Profile</Modal.Title>
+          <Modal.Title style={{ fontFamily: "Museo" }}>Edit Profile</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -38,10 +38,14 @@ function EditProfile() {
               <Form.Label>Alamat</Form.Label>
               <Form.Control as="textarea" placeholder="Alamat" rows={3} />
             </Form.Group>
+            <Form.Group controlId="formFile" className="mb-3">
+              <Form.Label>Ubah foto</Form.Label>
+              <Form.Control type="file"/>
+            </Form.Group>
           </Form>
-          <Button variant="success">
+          {/* <Button variant="success">
             <IconEdit /> Ganti foto
-          </Button>
+          </Button> */}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={handleClose}>

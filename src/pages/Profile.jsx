@@ -3,6 +3,9 @@ import Navigation from "../components/navigation/Navigation";
 import "../styles/Profile.css";
 
 const Profile = () => {
+  // const [isEdit, setIsEdit] = useState
+  // nama={props.nama} email={props.email} telp={props.telp} alamat={props.alamat}
+
   return (
     <>
       <Navigation />
