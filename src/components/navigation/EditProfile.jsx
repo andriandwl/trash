@@ -4,45 +4,42 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-function EditProfile() {
+function EditProfile({edit}) {
   const [show, setShow] = useState(false);
+  const [address, setAddress] = useState([]);
+  const [image, setImage] = useState([])
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  function getAccessToken() {
+    const tokenString = localStorage.getItem("accessToken");
+    const useToken = JSON.parse(tokenString);
+    return useToken?.token;
+  }
+
 
   return (
     <>
       <Button onClick={handleShow} variant="success">
         <IconEdit /> Edit profile
       </Button>
-
       <Modal show={show} onHide={handleClose} style={{ fontFamily: "Manrope" }}>
         <Modal.Header closeButton>
           <Modal.Title style={{ fontFamily: "Museo" }}>Edit Profile</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Nama</Form.Label>
-              <Form.Control type="text" placeholder="Nama anda" autoFocus />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" placeholder="email@anda.com" autoFocus />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Telepon</Form.Label>
-              <Form.Control type="number" placeholder="0819xxxxxx" autoFocus />
-            </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Alamat</Form.Label>
+              <Form.Label>{edit.address}</Form.Label>
               <Form.Control as="textarea" placeholder="Alamat" rows={3} />
             </Form.Group>
             <Form.Group controlId="formFile" className="mb-3">
-              <Form.Label>Ubah foto</Form.Label>
-              <Form.Control type="file"/>
+              <Form.Label>{edit.image}</Form.Label>
+              <Form.Control type="file" />
             </Form.Group>
           </Form>
+
           {/* <Button variant="success">
             <IconEdit /> Ganti foto
           </Button> */}
@@ -53,8 +50,9 @@ function EditProfile() {
           </Button>
           <Button variant="primary" onClick={handleClose}>
             Simpan
-          </Button>
+          </Button>l
         </Modal.Footer>
+
       </Modal>
     </>
   );

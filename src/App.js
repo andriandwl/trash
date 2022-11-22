@@ -13,6 +13,7 @@ import HomePage from "./pages/HomePage";
 import LandingPage from "./pages/LandingPage";
 import LayananPage from "./pages/LayananPage";
 import LoginPage from "./pages/LoginPage";
+import Profile from "./pages/Profile";
 import ProfilePage from "./pages/ProfilePage";
 import RegisterPage from "./pages/RegisterPage";
 import SchdulingPage from "./pages/SchdulingPage";
@@ -32,7 +33,8 @@ const App = () => {
           <Route path="/tentang-kami" element={<About />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/kontak-kami" element={<ContactUsPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile-page" element={<ProfilePage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/pembayaran" element={<DashboardPayment />} />
           <Route path="/dashboard/edukasi" element={<EducationPage />} />

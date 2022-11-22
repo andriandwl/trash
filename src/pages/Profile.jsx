@@ -1,10 +1,37 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import EditProfile from "../components/navigation/EditProfile";
 import Navigation from "../components/navigation/Navigation";
 import "../styles/Profile.css";
 
 const Profile = () => {
-  // const [isEdit, setIsEdit] = useState
-  // nama={props.nama} email={props.email} telp={props.telp} alamat={props.alamat}
+  const [edit, setIsEdit] = useState([]);
+  function getAccessToken() {
+    const tokenString = localStorage.getItem("accessToken");
+    const useToken = JSON.parse(tokenString);
+    return useToken?.token;
+  }
+
+  const id = localStorage.getItem("id");
+
+  const handleEdit = (id) => {
+
+    axios
+      .get(`http://pitrash.masuk.web.id/api/user/${id}`, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
+      })
+      .then((response) => {
+        // console.log(response.data.data.author);
+        setIsEdit(response.data.data);
+        console.log(response.data.data);
+      });
+  };
+
+  useEffect(() =>{
+    handleEdit(id);
+  }, []);
 
   return (
     <>
@@ -17,27 +44,27 @@ const Profile = () => {
                 <div className="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                   <div className="row align-items-center">
                     <div className="col-lg-6 mb-4 mb-lg-0 ">
-                      <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="..." />
+                      <img src={edit.user_detail.image} alt="..." />
                     </div>
                     <div className="col-lg-6 px-xl-10">
                       <div className="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
                         <h3 className="h2 text-white mb-0 " style={{ fontFamily: "Manrope" }}>
-                         Muhammad Reza bin H.Sueb
+                          {edit.name}
                         </h3>
                       </div>
-                      <ul className="list-unstyled mb-1-9 manrope text-black" >
+                      <ul className="list-unstyled mb-1-9 manrope text-black">
                         <li className="mb-2 mb-xl-3 display-28">
-                          <span className="display-26 text-black me-2 font-weight-600">Email :</span> kecapreza@mail.com
+                          <span className="display-26 text-black me-2 font-weight-600">Email :</span> {edit.email}
                         </li>
 
                         <li className="display-28 mb-2 mb-xl-3">
-                          <span className="display-26 text-black me-2 font-weight-600">Telepon :</span>081914168177
+                          <span className="display-26 text-black me-2 font-weight-600">Telepon :</span>{edit.phone}
                         </li>
                         <li className="mb-2 mb-xl-3 display-28">
-                          <span className="display-26 text-black me-2 font-weight-600">Alamat :</span>Villa Situdaun, Jalan Desa Situdaun, RT.7/RW.2, Situ Daun, Tenjolaya, Kab. Bogor, Tenjolaya, Jawa barat{" "}
+                          <span className="display-26 text-black me-2 font-weight-600">Alamat :</span>{edit.user_detail.address}
                         </li>
                       </ul>
-                      <EditProfile />
+                      <EditProfile edit={edit}/>
                     </div>
                   </div>
                 </div>

@@ -1,10 +1,11 @@
 import React from "react";
 import useToken from "../hooks/useToken";
 import LoginPage from "./LoginPage";
-import ProfilePage from "./ProfilePage";
+import Profile from "./Profile";
 
 function Auth() {
   const { token, setToken } = useToken();
+  console.log(setToken)
 
   if (!token) {
     return (
@@ -15,7 +16,7 @@ function Auth() {
   }
   return (
     <div>
-      <ProfilePage />
+      <Profile />
     </div>
   );
 }
