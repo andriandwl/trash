@@ -1,8 +1,8 @@
+import axios from "axios";
 import React, { useEffect } from "react";
-import NavigationDashboard from "../components/navigation/NavigationDashboard";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import axios from "axios";
+import NavigationDashboard from "../components/navigation/NavigationDashboard";
 
 function SchdulingPage() {
   const [date, setDate] = React.useState(new Date());
@@ -115,9 +115,9 @@ function SchdulingPage() {
                         </div>
                       </div>
                       <div className="col-lg-8 p-2">
-                        <div class="input-group input-group-sm mb-3">
+                        <div className="input-group input-group-sm mb-3">
                           <span
-                            class="input-group-text"
+                            className="input-group-text"
                             id="inputGroup-sizing-sm"
                           >
                             Small
@@ -125,20 +125,20 @@ function SchdulingPage() {
                           <input
                             type="text"
                             value={date.toString()}
-                            class="form-control"
+                            className="form-control"
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                           />
                         </div>
-                        <div class="input-group mb-3">
+                        <div className="input-group mb-3">
                           <button
-                            class="btn btn-outline-secondary"
+                            className="btn btn-outline-secondary"
                             type="button"
                           >
                             Button
                           </button>
                           <select
-                            class="form-select"
+                            className="form-select"
                             id="inputGroupSelect03"
                             aria-label="Example select with button addon"
                           >

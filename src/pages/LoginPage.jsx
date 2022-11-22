@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import login from "../assets/image/pictlogin.png";
 import Navigation from "../components/navigation/Navigation";
 
-function LoginPage(setToken) {
+function LoginPage({setToken}) {
   const BASE_URL = "http://pitrash.masuk.web.id";
 
   const [email, setEmail] = useState("");
@@ -33,15 +33,15 @@ function LoginPage(setToken) {
         }
       )
       .then(function (response) {
-        localStorage.setItem("accessToken", response.data.data.token);
+        localStorage.setItem("accessToken", response.data.data.token)
+        localStorage.setItem("id", response.data.data.user.id)
         localStorage.setItem("name", response.data.data.user.name);
-        console.log(response.data.data);
         setToken(response.data.data);
 
         if (localStorage.getItem("name") === "admin") {
           navigate("/dashboard");
         } else {
-          navigate("/home");
+          navigate("/");
         }
       })
       .catch(function (error) {
