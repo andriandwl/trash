@@ -1,7 +1,7 @@
 import React from "react";
 import useToken from "../hooks/useToken";
 import LoginPage from "./LoginPage";
-import ProfilePage from "./ProfilePage";
+import Profile from "./Profile";
 
 function Auth() {
   const { token, setToken } = useToken();
@@ -15,7 +15,7 @@ function Auth() {
   }
   return (
     <div>
-      <ProfilePage />
+      <Profile />
     </div>
   );
 }

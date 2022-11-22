@@ -17,12 +17,15 @@ import ProfilePage from "./pages/ProfilePage";
 import RegisterPage from "./pages/RegisterPage";
 import SchdulingPage from "./pages/SchdulingPage";
 import Users from "./pages/Users";
+import Profile from "./pages/Profile";
+import CantFind from "./pages/CantFind";
 
 const App = () => {
   return (
     <HelmetProvider>
       <main>
         <Routes>
+          <Route path="*" element={<CantFind />} />
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/home" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -32,7 +35,8 @@ const App = () => {
           <Route path="/tentang-kami" element={<About />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/kontak-kami" element={<ContactUsPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile/:id" element={<ProfilePage />} />
+          <Route path="/profile-user" element={<Profile />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/pembayaran" element={<DashboardPayment />} />
           <Route path="/dashboard/edukasi" element={<EducationPage />} />

@@ -33,7 +33,7 @@ function LandingPage() {
           <div className="col-12">
             <img src={section1} className="img-fluid" alt="..." />
           </div>
-          <div className="col-12">
+          <div className="container">
             <div className="row g-0 overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 pb-5">
               <div className="col-lg-6 col-md-6 col-sm-12  p-4 d-flex flex-column position-static">
                 <h3 className="mb-5 museo">Ayo Jaga Lingkungan</h3>

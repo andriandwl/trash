@@ -10,7 +10,8 @@ import Navigation from "../components/navigation/Navigation";
 // import { Link } from "react-router-dom";
 
 function HomePage() {
-  const [schdule, setSchdule] = React.useState([]);
+  const [history, setHistory] = React.useState([]);
+  const [incoming, setIncoming] = React.useState([]);
   const [education, setEducationPost] = React.useState([]);
 
   function getAccessToken() {
@@ -27,7 +28,8 @@ function HomePage() {
         },
       })
       .then((response) => {
-        setSchdule(response.data.data);
+        setHistory(response.data.data.history);
+        setIncoming(response.data.data.incoming);
       });
   };
   const getData = () => {
@@ -111,13 +113,7 @@ function HomePage() {
                         fontSize: "16px",
                       }}
                     >
-                      {schdule
-                        .filter((item, idx) => item.Category === "Pembayaran")
-                        .map((pay) => {
-                          return (
-                            <p className="card-title text-center">{pay.Date}</p>
-                          );
-                        })}
+                      <p className="card-title text-center">{history.Date}</p>
                     </div>
                     <div className="card-body">
                       <p className="card-title text-center">Jadwal Pickup</p>
@@ -174,30 +170,18 @@ function HomePage() {
                 <div className="col-lg-3">
                   <div className="card border-light mb-5">
                     <div className="card-body">
-                      {schdule
-                        .filter((item) => item.Category === "Pembayaran")
-                        .map((pay) => {
-                          return (
-                            <h5 key={pay.id} className="card-title text-center">
-                              {pay.Date}
-                            </h5>
-                          );
-                        })}
+                      <h5 className="card-title text-center">
+                        {incoming.Date}
+                      </h5>
                     </div>
                   </div>
                 </div>
                 <div className="col-lg-3">
                   <div className="card border-light mb-5">
                     <div className="card-body">
-                      {schdule
-                        .filter((item) => item.Category === "Pembayaran")
-                        .map((pay) => {
-                          return (
-                            <h5 key={pay.id} className="card-title text-center">
-                              {pay[`Due Date`]}
-                            </h5>
-                          );
-                        })}
+                      <h5 className="card-title text-center">
+                        {incoming.Due_Date}
+                      </h5>
                     </div>
                   </div>
                 </div>
@@ -215,7 +199,7 @@ function HomePage() {
               .filter((item, idx) => idx < 3)
               .map((edu) => {
                 return (
-                  <div className="card profile-card-5">
+                  <div key={edu.id} className="card profile-card-5">
                     <div className="card-img-block">
                       <img
                         className="card-img-top"

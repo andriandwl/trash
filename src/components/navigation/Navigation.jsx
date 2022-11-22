@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 function Navigation() {
-
   return (
     <div>
       <div className="row g-0">

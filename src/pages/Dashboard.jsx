@@ -91,7 +91,6 @@ function Dashboard() {
       })
       .then((response) => {
         setPoster(response.data.data);
-        console.log(response.data.data);
         getData();
       });
   };
@@ -127,7 +126,7 @@ function Dashboard() {
           <div className="col-lg-9">
             <div className="container">
               <div className="row g-0 gap-2 justify-content-between ms-2 me-2 mb-5">
-                <div className="col-lg-4 mt-4 col-md-12 col-sm-12">
+                <div className="col-lg-4 mt-4 col-md-12 col-sm-12 card-group">
                   <div
                     className="card profile-card-5"
                     style={{
@@ -157,7 +156,7 @@ function Dashboard() {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-3 mt-4" id="screen">
+                <div className="col-lg-3 mt-4 card-group" id="screen">
                   <div
                     className="card profile-card-5"
                     style={{
@@ -186,12 +185,12 @@ function Dashboard() {
                         <h2 className="museo">{educationPost.length}</h2>
                       </div>
                     </div>
-                    <div className="card-body pt-0 p-5 mt-3">
+                    <div className="card-body">
                       <h5 className="card-title text-center">Education</h5>
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-4 col-md-12 col-sm-12 mt-4 ">
+                <div className="col-lg-4 col-md-12 col-sm-12 mt-4 card-group ">
                   <div
                     className="card profile-card-5"
                     style={{
@@ -207,19 +206,17 @@ function Dashboard() {
                         className="centered"
                         style={{
                           backgroundColor: "white",
-                          padding: "10px",
+                          padding: "20px",
                           borderRadius: "20px",
                           color: "black",
                           fontSize: "24px",
                         }}
                       >
-                        <p className="manrope" style={{ textAlign: "center" }}>
-                          Pembayaran Sampah bulan ini
-                        </p>
+                        <h2 className="museo">{poster.length}</h2>
                       </div>
                     </div>
                     <div className="card-body pt-0">
-                      <h5 className="card-title text-center">Reminder</h5>
+                      <h5 className="card-title text-center">Poster</h5>
                     </div>
                   </div>
                 </div>
