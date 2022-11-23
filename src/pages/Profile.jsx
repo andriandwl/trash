@@ -43,25 +43,39 @@ const Profile = () => {
                 <div className="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                   <div className="row align-items-center">
                     <div className="col-lg-6 mb-4 mb-lg-0 ">
-                      <img src={edit.user_detail?.image} alt="..." width=' 50%' />
+                      <img
+                        src={edit.user_detail?.image}
+                        alt="..."
+                        width=" 50%"
+                      />
                     </div>
                     <div className="col-lg-6 px-xl-10">
                       <div className="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
-                        <h3 className="h2 text-white mb-0 " style={{ fontFamily: "Manrope" }}>
+                        <h3
+                          className="h2 text-white mb-0 "
+                          style={{ fontFamily: "Manrope" }}
+                        >
                           {edit.name}
                         </h3>
                       </div>
                       <ul className="list-unstyled mb-1-9 manrope text-black">
                         <li className="mb-2 mb-xl-3 display-28">
-                          <span className="display-26 text-black me-2 font-weight-600">Email :</span> {edit.email}
+                          <span className="display-26 text-black me-2 font-weight-600">
+                            Email :
+                          </span>{" "}
+                          {edit.email}
                         </li>
 
                         <li className="display-28 mb-2 mb-xl-3">
-                          <span className="display-26 text-black me-2 font-weight-600">Telepon :</span>
+                          <span className="display-26 text-black me-2 font-weight-600">
+                            Telepon :
+                          </span>
                           {edit.phone}
                         </li>
                         <li className="mb-2 mb-xl-3 display-28">
-                          <span className="display-26 text-black me-2 font-weight-600">Alamat :</span>
+                          <span className="display-26 text-black me-2 font-weight-600">
+                            Alamat :
+                          </span>
                           {edit.user_detail?.address}
                         </li>
                       </ul>
