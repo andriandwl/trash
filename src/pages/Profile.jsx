@@ -6,6 +6,7 @@ import "../styles/Profile.css";
 
 const Profile = () => {
   const [edit, setIsEdit] = useState([]);
+
   function getAccessToken() {
     const tokenString = localStorage.getItem("accessToken");
     const useToken = JSON.parse(tokenString);
@@ -13,9 +14,7 @@ const Profile = () => {
   }
 
   const id = localStorage.getItem("id");
-
   const handleEdit = (id) => {
-
     axios
       .get(`http://pitrash.masuk.web.id/api/user/${id}`, {
         headers: {
@@ -29,7 +28,7 @@ const Profile = () => {
       });
   };
 
-  useEffect(() =>{
+  useEffect(() => {
     handleEdit(id);
   }, []);
 
@@ -44,7 +43,7 @@ const Profile = () => {
                 <div className="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                   <div className="row align-items-center">
                     <div className="col-lg-6 mb-4 mb-lg-0 ">
-                      <img src={edit.user_detail.image} alt="..." />
+                      <img src={edit.user_detail?.image} alt="..." width=' 50%' />
                     </div>
                     <div className="col-lg-6 px-xl-10">
                       <div className="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
@@ -58,13 +57,15 @@ const Profile = () => {
                         </li>
 
                         <li className="display-28 mb-2 mb-xl-3">
-                          <span className="display-26 text-black me-2 font-weight-600">Telepon :</span>{edit.phone}
+                          <span className="display-26 text-black me-2 font-weight-600">Telepon :</span>
+                          {edit.phone}
                         </li>
                         <li className="mb-2 mb-xl-3 display-28">
-                          <span className="display-26 text-black me-2 font-weight-600">Alamat :</span>{edit.user_detail.address}
+                          <span className="display-26 text-black me-2 font-weight-600">Alamat :</span>
+                          {edit.user_detail?.address}
                         </li>
                       </ul>
-                      <EditProfile edit={edit}/>
+                      <EditProfile edit={edit} />
                     </div>
                   </div>
                 </div>

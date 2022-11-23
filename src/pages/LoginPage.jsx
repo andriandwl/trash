@@ -9,6 +9,7 @@ function LoginPage({setToken}) {
 
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
+  // const [token, setToken] = useState()
 
   const navigate = useNavigate();
 
