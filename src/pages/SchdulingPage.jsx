@@ -1,8 +1,8 @@
+import axios from "axios";
 import React, { useEffect } from "react";
-import NavigationDashboard from "../components/navigation/NavigationDashboard";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import axios from "axios";
+import NavigationDashboard from "../components/navigation/NavigationDashboard";
 
 function SchdulingPage() {
   const [date, setDate] = React.useState(new Date());

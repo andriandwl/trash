@@ -138,7 +138,7 @@ function AddEducationPage() {
                     />
                   </div>
                   <button
-                    className="btn btn-outline-secondary"
+                    className="btn mt-2 btn-outline-secondary"
                     type="submit"
                     id="inputGroupFileAddon04"
                   >
