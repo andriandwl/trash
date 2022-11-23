@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
 
 import section1 from "../assets/image/home.png";
-import edukasi1 from "../assets/image/edukasi-1.jpg";
 import store from "../assets/image/store.png";
 import NavigationHome from "../components/navigation/NavigationHome";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
 import Navigation from "../components/navigation/Navigation";
-// import { Link } from "react-router-dom";
 
 function HomePage() {
   const [history, setHistory] = React.useState([]);
@@ -22,7 +20,7 @@ function HomePage() {
 
   const getSchdule = () => {
     axios
-      .get(`http://pitrash.masuk.web.id/api/schedule`, {
+      .get(`http://pitrash.masuk.web.id/api/schedule/pickup`, {
         headers: {
           Authorization: `Bearer ${getAccessToken()}`,
         },
@@ -93,7 +91,10 @@ function HomePage() {
                   <div className="card border-light mb-5">
                     <div
                       className="card-header"
-                      style={{ backgroundColor: "#5caa47", color: "white" }}
+                      style={{
+                        backgroundColor: "#5caa47",
+                        color: "white",
+                      }}
                     ></div>
                     <div className="card-body">
                       <p className="card-text text-center">
@@ -102,24 +103,31 @@ function HomePage() {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-2">
-                  <div className="card border-light mb-5">
-                    <div
-                      className="card-header"
-                      style={{
-                        backgroundColor: "#5caa47",
-                        color: "white",
-                        padding: "10px",
-                        fontSize: "16px",
-                      }}
-                    >
-                      <p className="card-title text-center">{history.Date}</p>
-                    </div>
-                    <div className="card-body">
-                      <p className="card-title text-center">Jadwal Pickup</p>
-                    </div>
-                  </div>
-                </div>
+                {history
+                  .filter((item, idx) => idx < 1)
+                  .map((his) => {
+                    return (
+                      <div className="col-lg-2" key={his.id}>
+                        <div className="card border-light mb-5">
+                          <div
+                            className="card-header"
+                            style={{
+                              backgroundColor: "#5caa47",
+                            }}
+                          >
+                            <p className="card-title text-light ms-4">
+                              {his.Begin_Date}
+                            </p>
+                          </div>
+                          <div className="card-body">
+                            <p className="card-title text-center">
+                              Jadwal Pickup
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
               </div>
               <div className="row g-0 justify-content-center gap-3 mb-3">
                 <div className="col-lg-3">
@@ -159,33 +167,44 @@ function HomePage() {
                   </div>
                 </div>
               </div>
-              <div className="row g-0 justify-content-center gap-3">
-                <div className="col-lg-3">
-                  <div className="card border-light mb-5">
-                    <div className="card-body">
-                      <h5 className="card-title text-center">Rp. 30.000</h5>
+              {incoming
+                .filter((item, idx) => idx < 1)
+                .map((inc) => {
+                  return (
+                    <div
+                      className="row g-0 justify-content-center gap-3"
+                      key={inc.id}
+                    >
+                      <div className="col-lg-3">
+                        <div className="card border-light mb-5">
+                          <div className="card-body">
+                            <h5 className="card-title text-center">
+                              Rp. 30.000
+                            </h5>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-lg-3">
+                        <div className="card border-light mb-5">
+                          <div className="card-body">
+                            <h5 className="card-title text-center">
+                              {inc.Due_Date}
+                            </h5>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-lg-3">
+                        <div className="card border-light mb-5">
+                          <div className="card-body">
+                            <h5 className="card-title text-center">
+                              {inc.Begin_Date}
+                            </h5>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div className="col-lg-3">
-                  <div className="card border-light mb-5">
-                    <div className="card-body">
-                      <h5 className="card-title text-center">
-                        {incoming.Date}
-                      </h5>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-3">
-                  <div className="card border-light mb-5">
-                    <div className="card-body">
-                      <h5 className="card-title text-center">
-                        {incoming.Due_Date}
-                      </h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                  );
+                })}
             </div>
           </div>
         </div>

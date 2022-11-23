@@ -1,6 +1,6 @@
 import React from "react";
 import { HelmetProvider } from "react-helmet-async";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import AddEducationPage from "./pages/AddEducationPage";
 import Auth from "./pages/Auth";
@@ -21,13 +21,22 @@ import Profile from "./pages/Profile";
 import CantFind from "./pages/CantFind";
 
 const App = () => {
+  // const [user, setUser] = React.useState(null);
   return (
     <HelmetProvider>
       <main>
         <Routes>
-          <Route path="*" element={<CantFind />} />
           <Route exact path="/" element={<LandingPage />} />
-          <Route exact path="/home" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
+
+          {/* <Route
+            element={
+              <ProtectedRoute user={user} isAllowed={!!user}>
+                <Route path="home" element={<HomePage />} />
+                <Route path="dashboard" element={<Dashboard />} />
+              </ProtectedRoute>
+            }
+          ></Route> */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/layanan" element={<LayananPage />} />
@@ -35,10 +44,21 @@ const App = () => {
           <Route path="/tentang-kami" element={<About />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/kontak-kami" element={<ContactUsPage />} />
-          <Route path="/profile/:id" element={<ProfilePage />} />
+          <Route path="/profile/" element={<ProfilePage />} />
           <Route path="/profile-user" element={<Profile />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/pembayaran" element={<DashboardPayment />} />
+          {/* <Route
+            path="dashboard-edukasi"
+            element={
+              <ProtectedRoute
+                redirectPath="/dashboard"
+                isAllowed={!!user && user.role.includes(1)}
+              >
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          /> */}
           <Route path="/dashboard/edukasi" element={<EducationPage />} />
           <Route path="/dashboard/users" element={<Users />} />
           <Route
@@ -46,11 +66,20 @@ const App = () => {
             element={<AddEducationPage />}
           />
           <Route path="/dashboard/penjadwalan" element={<SchdulingPage />} />
+          <Route path="*" element={<CantFind />} />
         </Routes>
       </main>
       <footer></footer>
     </HelmetProvider>
   );
 };
+
+// const ProtectedRoute = ({ isAllowed, redirectPath = "/landing", children }) => {
+//   if (!isAllowed) {
+//     return <Navigate to={redirectPath} replace />;
+//   }
+
+//   return children ? children : <Outlet />;
+// };
 
 export default App;

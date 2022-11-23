@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Pickup({ incoming, history }) {
-  console.log(incoming);
-  console.log(history);
+function Pickup({ schedule, incoming }) {
   return (
     <div className="container">
       <div className="row g-0 mb-4 gap-4 justify-content-between">
@@ -11,12 +9,12 @@ function Pickup({ incoming, history }) {
           <div className="d-flex flex-wrap justify-content-between align-items-center">
             <h2 className="manrope p-2">History</h2>
           </div>
-          {history.map((his) => {
+          {schedule.map((his) => {
             return (
               <div className="col-lg-12 card-group" key={his.id}>
                 <div className="card card-margin">
                   <div className="card-header no-border">
-                    <h5 className="card-title">{his.Date}</h5>
+                    <h5 className="card-title">{his.Begin_Date}</h5>
                   </div>
                   <div className="card-body pt-0">
                     <div className="widget-49">
@@ -75,7 +73,7 @@ function Pickup({ incoming, history }) {
                       className="card-header border-2 mb-2"
                       style={{ backgroundColor: "#5caa47", color: "white" }}
                     >
-                      <h5 className="card-title">{inc.Date}</h5>
+                      <h5 className="card-title">{inc.Begin_Date}</h5>
                     </div>
                     <div className="card-body pt-0">
                       <div className="widget-49">

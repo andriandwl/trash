@@ -35,9 +35,10 @@ function LoginPage({ setToken }) {
       .then(function (response) {
         localStorage.setItem("accessToken", response.data.data.token);
         localStorage.setItem("name", response.data.data.user.name);
+        localStorage.setItem("id", response.data.data.user.id);
         setToken(response.data.data);
 
-        if (localStorage.getItem("name") === "admin web") {
+        if (localStorage.getItem("name") === "admin piTrash") {
           navigate("/dashboard");
         } else {
           navigate("/home");

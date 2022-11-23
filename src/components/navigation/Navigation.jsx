@@ -32,14 +32,14 @@ function Navigation() {
               >
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li className="nav-item ">
-                    <a
+                    <Link
                       className="nav-link active text-light"
                       aria-current="page"
-                      href="/"
+                      to="/"
                       style={{ fontFamily: "Manrope" }}
                     >
                       Beranda
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item ">
                     <Link
@@ -53,31 +53,13 @@ function Navigation() {
                   </li>
                   <li className="nav-item dropdown">
                     <Link
-                      className="nav-link dropdown-toggle text-light manrope"
+                      className="nav-link text-light manrope"
                       to="/layanan"
                       role="button"
-                      data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
                       Layanan
                     </Link>
-                    <ul className="dropdown-menu">
-                      <li>
-                        <Link className="dropdown-item" to="/layanan">
-                          Penjadwalan
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to="/layanan">
-                          Pengingat
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to="/layanan">
-                          Pembayaran
-                        </Link>
-                      </li>
-                    </ul>
                   </li>
                   <li className="nav-item">
                     <Link

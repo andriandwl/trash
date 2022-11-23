@@ -1,7 +1,7 @@
 import React from "react";
 import Navigation from "../components/navigation/Navigation";
 
-import section1 from "../assets/image/section-1.png";
+import section1 from "../assets/image/section-1.jpg";
 import section2 from "../assets/image/section-2.jpg";
 import edukasi1 from "../assets/image/edukasi-1.jpg";
 import store from "../assets/image/store.png";

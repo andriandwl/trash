@@ -54,31 +54,13 @@ function NavigationHome() {
                   </li>
                   <li className="nav-item dropdown">
                     <Link
-                      className="nav-link dropdown-toggle text-light manrope"
+                      className="nav-link text-light manrope"
                       to="/layanan"
                       role="button"
-                      data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
                       Layanan
                     </Link>
-                    <ul className="dropdown-menu">
-                      <li>
-                        <Link className="dropdown-item" to="/layanan">
-                          Penjadwalan
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to="/layanan">
-                          Pengingat
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to="/layanan">
-                          Pembayaran
-                        </Link>
-                      </li>
-                    </ul>
                   </li>
                   <li className="nav-item">
                     <Link
@@ -110,7 +92,7 @@ function NavigationHome() {
                   >
                     {localStorage.getItem("name")}
                   </Link>
-                  <Link to="/profile">
+                  <Link to="/profile-user">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="30"

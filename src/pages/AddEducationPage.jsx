@@ -8,6 +8,7 @@ function AddEducationPage() {
   const [title, setTitle] = React.useState("");
   const [content, setContent] = React.useState("");
   const [image, setImage] = React.useState("");
+  const [isEdit, setIsEdit] = React.useState(false);
 
   function getAccessToken() {
     const tokenString = localStorage.getItem("accessToken");
@@ -36,22 +37,45 @@ function AddEducationPage() {
     formDataEdit.append("title", title);
     formDataEdit.append("content", content);
     formDataEdit.append("image", image);
-    axios
-      .post(`http://pitrash.masuk.web.id/api/education/create`, formDataEdit, {
-        headers: {
-          Authorization: `Bearer ${getAccessToken()}`,
-          Accept: "application/json",
-        },
-      })
-      .then(function (response) {
-        getData();
-        setTitle("");
-        setContent("");
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    if (isEdit === true) {
+      axios
+        .post(`http://pitrash.masuk.web.id/api/education/`, formDataEdit, {
+          headers: {
+            Authorization: `Bearer ${getAccessToken()}`,
+            Accept: "application/json",
+          },
+        })
+        .then(function (response) {
+          getData();
+          setTitle("");
+          setContent("");
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    } else {
+      axios
+        .post(
+          `http://pitrash.masuk.web.id/api/education/create`,
+          formDataEdit,
+          {
+            headers: {
+              Authorization: `Bearer ${getAccessToken()}`,
+              Accept: "application/json",
+            },
+          }
+        )
+        .then(function (response) {
+          getData();
+          setTitle("");
+          setContent("");
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
   };
+
   return (
     <div>
       <NavigationDashboard />
@@ -64,7 +88,7 @@ function AddEducationPage() {
             boxShadow: "5px 5px 4px rgba(0, 0, 0, 0.25)",
           }}
         >
-          <Edukasi allpost={educationPost} />
+          <Edukasi allpost={educationPost} setIsEdit={setIsEdit} />
         </div>
         <div className="col-lg-9">
           <div className="container">

@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-function EditProfile() {
+function EditProfile({ edit }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -16,25 +16,44 @@ function EditProfile() {
         <IconEdit /> Edit profile
       </Button>
 
-      <Modal show={show} onHide={handleClose} style={{fontFamily:'Manrope'}}>
+      <Modal show={show} onHide={handleClose} style={{ fontFamily: "Manrope" }}>
         <Modal.Header closeButton>
-          <Modal.Title  style={{fontFamily:'Museo'}}>Edit Profile</Modal.Title>
+          <Modal.Title style={{ fontFamily: "Museo" }}>
+            Edit Profile
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Nama</Form.Label>
-              <Form.Control type="text" placeholder="Nama anda" autoFocus />
+              <Form.Control
+                type="text"
+                placeholder="Nama anda"
+                autoFocus
+                value={edit.name}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" placeholder="email@anda.com" autoFocus />
+              <Form.Control
+                type="email"
+                placeholder="email@anda.com"
+                autoFocus
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Telepon</Form.Label>
-              <Form.Control type="number" placeholder="0819xxxxxx" autoFocus />
+              <Form.Control
+                type="number"
+                placeholder="0819xxxxxx"
+                autoFocus
+                value={edit.phone}
+              />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
               <Form.Label>Alamat</Form.Label>
               <Form.Control as="textarea" placeholder="Alamat" rows={3} />
             </Form.Group>
