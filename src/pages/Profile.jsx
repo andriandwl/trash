@@ -2,11 +2,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import EditProfile from "../components/navigation/EditProfile";
 import Navigation from "../components/navigation/Navigation";
-import NavigationHome from "../components/navigation/NavigationHome";
 import "../styles/Profile.css";
 
 const Profile = () => {
   const [edit, setIsEdit] = useState([]);
+
   function getAccessToken() {
     const tokenString = localStorage.getItem("accessToken");
     const useToken = JSON.parse(tokenString);
@@ -14,7 +14,6 @@ const Profile = () => {
   }
 
   const id = localStorage.getItem("id");
-
   const handleEdit = (id) => {
     axios
       .get(`http://pitrash.masuk.web.id/api/user/${id}`, {
@@ -35,11 +34,7 @@ const Profile = () => {
 
   return (
     <>
-      {localStorage.getItem("name") === "admin" ? (
-        <Navigation />
-      ) : (
-        <NavigationHome />
-      )}
+      <Navigation />
       <section className="uppage">
         <div className="container bg-light me-5 mt-3">
           <div className="row">
@@ -48,7 +43,11 @@ const Profile = () => {
                 <div className="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                   <div className="row align-items-center">
                     <div className="col-lg-6 mb-4 mb-lg-0 ">
-                      <img src={edit.user_detail?.image} alt="..." />
+                      <img
+                        src={edit.user_detail?.image}
+                        alt="..."
+                        width=" 50%"
+                      />
                     </div>
                     <div className="col-lg-6 px-xl-10">
                       <div className="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">

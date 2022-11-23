@@ -9,6 +9,7 @@ function LoginPage({ setToken }) {
 
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
+  // const [token, setToken] = useState()
 
   const navigate = useNavigate();
 
@@ -34,8 +35,8 @@ function LoginPage({ setToken }) {
       )
       .then(function (response) {
         localStorage.setItem("accessToken", response.data.data.token);
-        localStorage.setItem("name", response.data.data.user.name);
         localStorage.setItem("id", response.data.data.user.id);
+        localStorage.setItem("name", response.data.data.user.name);
         setToken(response.data.data);
 
         if (localStorage.getItem("name") === "admin piTrash") {

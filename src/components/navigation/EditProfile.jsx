@@ -1,21 +1,73 @@
 import { IconEdit } from "@tabler/icons";
+import axios from "axios";
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import { useNavigate } from "react-router-dom";
 
 function EditProfile({ edit }) {
   const [show, setShow] = useState(false);
+  const [save, setSave] = useState(true);
+
+  const navigate = useNavigate();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [image, setImage] = useState();
+
+  function getAccessToken() {
+    const tokenString = localStorage.getItem("accessToken");
+    const useToken = JSON.parse(tokenString);
+    return useToken?.token;
+  }
+
+  console.log(getAccessToken());
+
+  const handleSave = (event) => {
+    event.preventDefault();
+    console.log("clicked");
+    const data = new FormData();
+    data.append("name", name);
+    data.append("address", address);
+    data.append("phone", phone);
+    data.append("email", email);
+    data.append("image", image);
+
+    if (save === true) {
+      axios
+        .post(
+          `http://pitrash.masuk.web.id/api/user/edit`,
+          data,
+
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Accept: "application/json",
+              Authorization: `Bearer ${getAccessToken()}`,
+            },
+          }
+        )
+        .then((response) => {
+          // console.log(response.data.data.author);
+          setSave(response.data.data);
+          console.log(response.data.data);
+          alert("berhasil di ubah");
+          navigate("/profile");
+        });
+    }
+  };
 
   return (
     <>
       <Button onClick={handleShow} variant="success">
         <IconEdit /> Edit profile
       </Button>
-
       <Modal show={show} onHide={handleClose} style={{ fontFamily: "Manrope" }}>
         <Modal.Header closeButton>
           <Modal.Title style={{ fontFamily: "Museo" }}>
@@ -23,53 +75,73 @@ function EditProfile({ edit }) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Nama</Form.Label>
+          <Form onSubmit={(e) => handleSave(e)}>
+            <Form.Group
+              className="mb-2"
+              controlId="exampleForm.ControlTextarea1"
+            >
               <Form.Control
                 type="text"
-                placeholder="Nama anda"
-                autoFocus
-                value={edit.name}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="email@anda.com"
-                autoFocus
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Telepon</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="0819xxxxxx"
-                autoFocus
-                value={edit.phone}
+                placeholder="nama"
+                defaultValue={edit.name}
+                onChange={(e) => setName(e.target.value)}
               />
             </Form.Group>
             <Form.Group
-              className="mb-3"
+              className="mb-2"
               controlId="exampleForm.ControlTextarea1"
             >
-              <Form.Label>Alamat</Form.Label>
-              <Form.Control as="textarea" placeholder="Alamat" rows={3} />
+              <Form.Control
+                type="email"
+                placeholder="email"
+                defaultValue={edit.email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </Form.Group>
-          </Form>
-          <Button variant="success">
+            <Form.Group
+              className="mb-2"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Control
+                type="number"
+                placeholder="telepon"
+                defaultValue={edit.phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group
+              className="mb-2"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Control
+                as="textarea"
+                placeholder="Alamat"
+                rows={3}
+                defaultValue={edit.user_detail?.address}
+                onChange={(e) => setAddress(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId="formFile" className="mb-3">
+              <Form.Control
+                type="file"
+                accept=".jpg, .png"
+                onChange={(e) => setImage(e.target.files[0])}
+              />
+              <Button onClick={handleSave} variant="primary" className="mt-2">
+                Simpan
+              </Button>
+            </Form.Group>
+
+            {/* <Button variant="success">
             <IconEdit /> Ganti foto
-          </Button>
+          </Button> */}
+            <Modal.Footer>
+              <Button variant="danger" onClick={handleClose}>
+                Batal
+              </Button>
+            </Modal.Footer>
+          </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="danger" onClick={handleClose}>
-            Keluar
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Simpan
-          </Button>
-        </Modal.Footer>
       </Modal>
     </>
   );
