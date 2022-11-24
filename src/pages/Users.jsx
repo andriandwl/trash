@@ -60,7 +60,7 @@ function Users() {
         </div>
         <div className="col-lg-9">
           <div className="container">
-            <table className="table table-success table-striped">
+            <table className="table table-striped">
               <thead>
                 <tr>
                   <th scope="col">#</th>

@@ -9,13 +9,19 @@ import "../styles/Dashboard.css";
 import Pickup from "../components/Pickup";
 import EdukasiDashboard from "../components/EdukasiDashboard";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Dashboard() {
   const [educationPost, setEducationPost] = React.useState([]);
   const [users, setUsers] = React.useState([]);
-  const [schdule, setSchdule] = React.useState([]);
+  const [schedule, setSchdule] = React.useState([]);
+  const [incoming, setIncoming] = React.useState([]);
 
   const [image, setImage] = React.useState("");
+  const [poster, setPoster] = React.useState([]);
+  const [transaction, setTransaction] = React.useState([]);
+
+  const [isLoading, setIsLoading] = React.useState(true);
 
   function getAccessToken() {
     const tokenString = localStorage.getItem("accessToken");
@@ -34,6 +40,7 @@ function Dashboard() {
         setEducationPost(response.data.data);
       });
   };
+
   const getAllUser = () => {
     axios
       .get(`http://pitrash.masuk.web.id/api/user`, {
@@ -46,50 +53,101 @@ function Dashboard() {
       });
   };
 
-  const getSchdule = () => {
+  const getSchduleHistory = () => {
     axios
-      .get(`http://pitrash.masuk.web.id/api/master`, {
+      .get(`http://pitrash.masuk.web.id/api/schedule/pickup`, {
         headers: {
           Authorization: `Bearer ${getAccessToken()}`,
         },
       })
       .then((response) => {
-        console.log(response.data.data);
-        setSchdule(response.data.data);
+        setSchdule(response.data.data.history);
       });
   };
 
-  const addPoster = () => {
+  const getSchduleIncoming = () => {
+    axios
+      .get(`http://pitrash.masuk.web.id/api/schedule/pickup`, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
+      })
+      .then((response) => {
+        setIncoming(response.data.data.incoming);
+      });
+  };
+
+  const getTransaction = () => {
+    axios
+      .get(`http://pitrash.masuk.web.id/api/transaction`, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
+      })
+      .then((response) => {
+        setTransaction(response.data.data);
+      });
+  };
+
+  const addPoster = (e) => {
+    e.preventDefault();
     const formDataEdit = new FormData();
     formDataEdit.append("image", image);
     axios
-      .post(`http://127.0.0.1:8000/api/poster/create`, formDataEdit, {
+      .post(`http://pitrash.masuk.web.id/api/poster/create`, formDataEdit, {
         headers: {
           Authorization: `Bearer ${getAccessToken()}`,
           Accept: "application/json",
         },
       })
-      .then(function (response) {
-        getData();
-      })
+      .then(function (response) {})
       .catch(function (error) {
         console.log(error);
       });
   };
+
+  const getPoster = () => {
+    axios
+      .get(`http://pitrash.masuk.web.id/api/poster`, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+          Accept: "application/json",
+        },
+      })
+      .then((response) => {
+        setPoster(response.data.data);
+      });
+  };
+
+  const handleEditUser = () => {};
+  const handleEditTransaction = () => {};
   React.useEffect(() => {
     getData();
     getAllUser();
-    getSchdule();
+    getSchduleHistory();
+    getSchduleIncoming();
+    getPoster();
+    getTransaction();
+
+    setIsLoading(false);
   }, []);
 
-  return (
+  return isLoading ? (
+    <>
+      <div className="spinner-border m-5" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    </>
+  ) : (
     <div>
       <NavigationDashboard />
       <main>
-        <div className="row g-0">
-          <div className="col-lg-3"></div>
-          <div className="col-lg-9">
-            <h2 className="museo text-center">Overview</h2>
+        <div className="container">
+          <div className="row g-0">
+            <div className="col-lg-3"></div>
+            <div className="col-lg-9">
+              <h2 className="museo text-center">Overview</h2>
+            </div>
           </div>
         </div>
         <div className="row g-0">
@@ -107,7 +165,7 @@ function Dashboard() {
           <div className="col-lg-9">
             <div className="container">
               <div className="row g-0 gap-2 justify-content-between ms-2 me-2 mb-5">
-                <div className="col-lg-4 mt-4 col-md-12 col-sm-12">
+                <div className="col-lg-4 mt-4 col-md-12 col-sm-12 card-group">
                   <div
                     className="card profile-card-5"
                     style={{
@@ -137,7 +195,7 @@ function Dashboard() {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-3 mt-4" id="screen">
+                <div className="col-lg-3 mt-4 card-group" id="screen">
                   <div
                     className="card profile-card-5"
                     style={{
@@ -166,12 +224,12 @@ function Dashboard() {
                         <h2 className="museo">{educationPost.length}</h2>
                       </div>
                     </div>
-                    <div className="card-body pt-0 p-5 mt-3">
+                    <div className="card-body">
                       <h5 className="card-title text-center">Education</h5>
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-4 col-md-12 col-sm-12 mt-4 ">
+                <div className="col-lg-4 col-md-12 col-sm-12 mt-4 card-group ">
                   <div
                     className="card profile-card-5"
                     style={{
@@ -187,30 +245,70 @@ function Dashboard() {
                         className="centered"
                         style={{
                           backgroundColor: "white",
-                          padding: "10px",
+                          padding: "20px",
                           borderRadius: "20px",
                           color: "black",
                           fontSize: "24px",
                         }}
                       >
-                        <p className="manrope" style={{ textAlign: "center" }}>
-                          Pembayaran Sampah bulan ini
-                        </p>
+                        <h2 className="museo">{poster.length}</h2>
                       </div>
                     </div>
                     <div className="card-body pt-0">
-                      <h5 className="card-title text-center">Reminder</h5>
+                      <h5 className="card-title text-center">Poster</h5>
                     </div>
+                  </div>
+                </div>
+              </div>
+              <div className="row g-0">
+                <div className="col-lg-12">
+                  <h1 className="manrope text-center">Search</h1>
+                  <div class="input-group mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      aria-label="Text input with dropdown button"
+                    />
+                    <button
+                      class="btn btn-outline-secondary dropdown-toggle"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Filter
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li>
+                        <Link class="dropdown-item" to="/">
+                          Education
+                        </Link>
+                      </li>
+                      <li>
+                        <Link class="dropdown-item" to="/">
+                          Service
+                        </Link>
+                      </li>
+                      <li>
+                        <Link class="dropdown-item" to="/">
+                          User
+                        </Link>
+                      </li>
+                      <li>
+                        <Link class="dropdown-item" to="/">
+                          Transaction
+                        </Link>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Tanggal */}
-            <Pickup schdule={schdule} />
+            <Pickup schedule={schedule} incoming={incoming} />
 
             <div className="container">
-              <div className="row g-0">
+              <div className="row g-0 mb-5 justify-content-center">
                 <div className="d-flex flex-wrap justify-content-between align-items-center">
                   <h2 className="manrope p-2">Poster</h2>
                   <button
@@ -232,6 +330,34 @@ function Dashboard() {
                     </svg>
                   </button>
                 </div>
+                {poster.map((post) => {
+                  return (
+                    <div
+                      key={post.id}
+                      className="col-lg-4 mt-4 col-md-12 col-sm-12"
+                    >
+                      <div
+                        className="card profile-card-5"
+                        style={{
+                          boxShadow: "5px 5px 4px rgba(0, 0, 0, 0.25)",
+                        }}
+                      >
+                        <div
+                          className="card-img-block "
+                          style={{
+                            boxShadow: "5px 5px 4px rgba(0, 0, 0, 0.25)",
+                          }}
+                        >
+                          <img
+                            className="card-img-top"
+                            src={post.image}
+                            alt="Card"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
@@ -285,10 +411,10 @@ function Dashboard() {
             </div>
 
             {/* Table */}
-            <div className="container">
+            <div className="container mb-4">
               <div className="row g-0 ms-2 me-2">
                 <div className="col-lg-12">
-                  <h3 className="manrope mb-">Users</h3>
+                  <h3 className="manrope mb-2">Users</h3>
                   <div
                     className="table-responsive"
                     style={{ borderRadius: "10px" }}
@@ -301,6 +427,7 @@ function Dashboard() {
                           <th scope="col">Email</th>
                           <th scope="col">Phone Number</th>
                           <th scope="col">Role</th>
+                          <th scope="col">Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -312,12 +439,99 @@ function Dashboard() {
                               <td>{user.email}</td>
                               <td>{user.phone}</td>
                               <td>{user.role}</td>
+                              <td>
+                                <button
+                                  type="button"
+                                  className="btn"
+                                  style={{
+                                    backgroundColor: "transparent",
+                                    border: "0",
+                                  }}
+                                  onClick={handleEditUser(user.id)}
+                                >
+                                  Edit
+                                </button>
+                              </td>
                             </tr>
                           );
                         })}
                       </tbody>
                     </table>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="container">
+              <div className="row g-0 justify-content-between">
+                <div className="col-lg-11">
+                  <h3 className="manrope mb-2">Transaction</h3>
+                </div>
+                <div className="col-lg-1">
+                  <div className="dropdown">
+                    <button
+                      className="btn btn-dark dropdown-toggle"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Status
+                    </button>
+                    <ul className="dropdown-menu">
+                      <li>
+                        <Link className="dropdown-item" to="#">
+                          Paid
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="dropdown-item" to="#">
+                          Unpaid
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="row g-0">
+                <div className="col-lg-12">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">user id</th>
+                        <th scope="col">price</th>
+                        <th scope="col">image</th>
+                        <th scope="col">status</th>
+                        <th scope="col">action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {transaction.map((trans) => {
+                        return (
+                          <tr key={trans.id}>
+                            <th scope="row">{trans.id}</th>
+                            <td>{trans.user_id}</td>
+                            <td>{trans.price}</td>
+                            <td>{trans.image}</td>
+                            <td>{trans.status}</td>
+                            <td>
+                              <button
+                                type="button"
+                                className="btn"
+                                style={{
+                                  backgroundColor: "transparent",
+                                  border: "0",
+                                }}
+                                onClick={handleEditTransaction}
+                              >
+                                Edit
+                              </button>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>

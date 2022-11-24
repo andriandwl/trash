@@ -124,7 +124,7 @@ function NavigationDashboard() {
                       }}
                     />
                   </Link>
-                  <Link to="/home">
+                  <Link to="/">
                     <img
                       src={account}
                       alt="icon-profile"

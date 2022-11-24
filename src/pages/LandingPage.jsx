@@ -1,14 +1,23 @@
 import React from "react";
 import Navigation from "../components/navigation/Navigation";
 
-import section1 from "../assets/image/section-1.png";
+import section1 from "../assets/image/section-1.jpg";
 import section2 from "../assets/image/section-2.jpg";
 import edukasi1 from "../assets/image/edukasi-1.jpg";
 import store from "../assets/image/store.png";
+import { Helmet } from "react-helmet-async";
 
 function LandingPage() {
   return (
     <div>
+      <Helmet>
+        <title>Pi Trash</title>
+        <link rel="icon" href="../assets/image/logor.png"></link>
+        <meta
+          name="description"
+          content="Beginner friendly page for learning React Helmet."
+        />
+      </Helmet>
       <Navigation />
       <main>
         <div className="row g-0">
@@ -24,7 +33,7 @@ function LandingPage() {
           <div className="col-12">
             <img src={section1} className="img-fluid" alt="..." />
           </div>
-          <div className="col-12">
+          <div className="container">
             <div className="row g-0 overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 pb-5">
               <div className="col-lg-6 col-md-6 col-sm-12  p-4 d-flex flex-column position-static">
                 <h3 className="mb-5 museo">Ayo Jaga Lingkungan</h3>
@@ -155,7 +164,7 @@ function LandingPage() {
               <p>Edukasi</p>
             </div>
             <div className="row g-0">
-              <div className="col-lg-4 mt-4">
+              <div className="col-lg-4 mt-4 card-group">
                 <div className="card profile-card-5">
                   <div className="card-img-block">
                     <img className="card-img-top" src={edukasi1} alt="Card" />
@@ -169,7 +178,7 @@ function LandingPage() {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-4 mt-4">
+              <div className="col-lg-4 mt-4 card-group">
                 <div className="card profile-card-5">
                   <div className="card-img-block">
                     <img className="card-img-top" src={edukasi1} alt="Card" />
@@ -184,7 +193,7 @@ function LandingPage() {
                 </div>
               </div>
 
-              <div className="col-lg-4 mt-4">
+              <div className="col-lg-4 mt-4 card-group">
                 <div className="card profile-card-5">
                   <div className="card-img-block">
                     <img className="card-img-top" src={edukasi1} alt="Card" />

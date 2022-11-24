@@ -64,7 +64,7 @@ function EducationPage() {
             <div className="row g-0 justify-content-center">
               {educationPost.map((edu) => {
                 return (
-                  <div key={edu.id} className="col-lg-10 mb-5">
+                  <div key={edu.id} className="col-lg-4 mb-5 card-group">
                     <div className="card profile-card-5">
                       <div className="card-img-block">
                         <img
@@ -75,7 +75,6 @@ function EducationPage() {
                       </div>
                       <div className="card-body pt-0">
                         <h5 className="card-title text-center">{edu.title}</h5>
-                        <p>{edu.content}</p>
                       </div>
                     </div>
                   </div>
