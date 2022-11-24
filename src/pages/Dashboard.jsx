@@ -478,12 +478,17 @@ function Dashboard() {
                     <ul className="dropdown-menu">
                       <li>
                         <Link className="dropdown-item" to="#">
-                          Paid
+                          Sudah Dibayar
                         </Link>
                       </li>
                       <li>
                         <Link className="dropdown-item" to="#">
-                          Unpaid
+                          Belum Dibayar
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="dropdown-item" to="#">
+                          Menunggu Verifikasi
                         </Link>
                       </li>
                     </ul>
