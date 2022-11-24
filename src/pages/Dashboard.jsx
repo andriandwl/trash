@@ -263,38 +263,38 @@ function Dashboard() {
               <div className="row g-0">
                 <div className="col-lg-12">
                   <h1 className="manrope text-center">Search</h1>
-                  <div class="input-group mb-3">
+                  <div className="input-group mb-3">
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       aria-label="Text input with dropdown button"
                     />
                     <button
-                      class="btn btn-outline-secondary dropdown-toggle"
+                      className="btn btn-outline-secondary dropdown-toggle"
                       type="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
                       Filter
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
+                    <ul className="dropdown-menu dropdown-menu-end">
                       <li>
-                        <Link class="dropdown-item" to="/">
+                        <Link className="dropdown-item" to="/">
                           Education
                         </Link>
                       </li>
                       <li>
-                        <Link class="dropdown-item" to="/">
+                        <Link className="dropdown-item" to="/">
                           Service
                         </Link>
                       </li>
                       <li>
-                        <Link class="dropdown-item" to="/">
+                        <Link className="dropdown-item" to="/">
                           User
                         </Link>
                       </li>
                       <li>
-                        <Link class="dropdown-item" to="/">
+                        <Link className="dropdown-item" to="/">
                           Transaction
                         </Link>
                       </li>
@@ -426,7 +426,6 @@ function Dashboard() {
                           <th scope="col">Nama</th>
                           <th scope="col">Email</th>
                           <th scope="col">Phone Number</th>
-                          <th scope="col">Role</th>
                           <th scope="col">Action</th>
                         </tr>
                       </thead>
@@ -438,7 +437,6 @@ function Dashboard() {
                               <td>{user.name}</td>
                               <td>{user.email}</td>
                               <td>{user.phone}</td>
-                              <td>{user.role}</td>
                               <td>
                                 <button
                                   type="button"

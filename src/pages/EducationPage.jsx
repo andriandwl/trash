@@ -2,11 +2,18 @@ import React from "react";
 import NavigationDashboard from "../components/navigation/NavigationDashboard";
 
 import axios from "axios";
+import { slice } from "lodash";
 
 function EducationPage() {
   const [educationPost, setEducationPost] = React.useState([]);
+  const [isCompleted, setIsCompleted] = React.useState(false);
+  const [index, setIndex] = React.useState(5);
+  const initialPosts = slice(educationPost, 0, index);
+
   function getAccessToken() {
-    return localStorage.getItem("accessToken");
+    const tokenString = localStorage.getItem("accessToken");
+    const useToken = JSON.parse(tokenString);
+    return useToken?.token;
   }
 
   const getData = () => {
@@ -21,9 +28,20 @@ function EducationPage() {
       });
   };
 
+  const loadMore = () => {
+    setIndex(index + 5);
+    console.log(index);
+    if (index >= educationPost.length) {
+      setIsCompleted(true);
+    } else {
+      setIsCompleted(false);
+    }
+  };
+
   React.useEffect(() => {
     getData();
   }, []);
+
   return (
     <div>
       <NavigationDashboard />
@@ -62,7 +80,7 @@ function EducationPage() {
         <div className="col-lg-9 mt-4">
           <div className="container">
             <div className="row g-0 justify-content-center">
-              {educationPost.map((edu) => {
+              {initialPosts.map((edu) => {
                 return (
                   <div key={edu.id} className="col-lg-4 mb-5 card-group">
                     <div className="card profile-card-5">
@@ -80,6 +98,27 @@ function EducationPage() {
                   </div>
                 );
               })}
+            </div>
+            <div className="row g-0 m-2">
+              <div className="col-12 text-center">
+                {isCompleted ? (
+                  <button
+                    onClick={loadMore}
+                    type="button"
+                    className="btn btn-danger disabled"
+                  >
+                    That's Itx
+                  </button>
+                ) : (
+                  <button
+                    onClick={loadMore}
+                    type="button"
+                    className="btn btn-danger"
+                  >
+                    Load More +
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
