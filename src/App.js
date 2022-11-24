@@ -19,6 +19,8 @@ import RegisterPage from "./pages/RegisterPage";
 import SchdulingPage from "./pages/SchdulingPage";
 import Users from "./pages/Users";
 
+import CantFind from "./pages/CantFind";
+
 const App = () => {
   return (
     <HelmetProvider>
@@ -44,6 +46,7 @@ const App = () => {
             element={<AddEducationPage />}
           />
           <Route path="/dashboard/penjadwalan" element={<SchdulingPage />} />
+          <Route path="*" element={<CantFind />} />
         </Routes>
       </main>
       <footer></footer>
