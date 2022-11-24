@@ -137,7 +137,7 @@ const About = () => {
 
       <div className="container ">
         <div className="row text-center text-black  ">
-          <h2 clasName="service" style={{ fontFamily: "museo" }}>
+          <h2 className="service" style={{ fontFamily: "museo" }}>
             Layanan Kami
           </h2>
 

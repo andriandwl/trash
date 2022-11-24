@@ -5,11 +5,13 @@ import bguser from "../assets/image/bg-1.jpg";
 import bgedukasi from "../assets/image/bg-2.jpg";
 import bgnotif from "../assets/image/bg-5.jpg";
 
-import "../styles/Dashboard.css";
-import Pickup from "../components/Pickup";
-import EdukasiDashboard from "../components/EdukasiDashboard";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import EdukasiDashboard from "../components/EdukasiDashboard";
+import EditTrans from "../components/navigation/EditTrans";
+import EditUser from "../components/navigation/EditUser";
+import Pickup from "../components/Pickup";
+import "../styles/Dashboard.css";
 
 function Dashboard() {
   const [educationPost, setEducationPost] = React.useState([]);
@@ -22,6 +24,8 @@ function Dashboard() {
   const [transaction, setTransaction] = React.useState([]);
 
   const [isLoading, setIsLoading] = React.useState(true);
+
+
 
   function getAccessToken() {
     const tokenString = localStorage.getItem("accessToken");
@@ -119,8 +123,6 @@ function Dashboard() {
       });
   };
 
-  const handleEditUser = () => {};
-  const handleEditTransaction = () => {};
   React.useEffect(() => {
     getData();
     getAllUser();
@@ -263,38 +265,38 @@ function Dashboard() {
               <div className="row g-0">
                 <div className="col-lg-12">
                   <h1 className="manrope text-center">Search</h1>
-                  <div class="input-group mb-3">
+                  <div className="input-group mb-3">
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       aria-label="Text input with dropdown button"
                     />
                     <button
-                      class="btn btn-outline-secondary dropdown-toggle"
+                      className="btn btn-outline-secondary dropdown-toggle"
                       type="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
                       Filter
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
+                    <ul className="dropdown-menu dropdown-menu-end">
                       <li>
-                        <Link class="dropdown-item" to="/">
+                        <Link className="dropdown-item" to="/">
                           Education
                         </Link>
                       </li>
                       <li>
-                        <Link class="dropdown-item" to="/">
+                        <Link className="dropdown-item" to="/">
                           Service
                         </Link>
                       </li>
                       <li>
-                        <Link class="dropdown-item" to="/">
+                        <Link className="dropdown-item" to="/">
                           User
                         </Link>
                       </li>
                       <li>
-                        <Link class="dropdown-item" to="/">
+                        <Link className="dropdown-item" to="/">
                           Transaction
                         </Link>
                       </li>
@@ -422,11 +424,11 @@ function Dashboard() {
                     <table className="table table-success table-striped">
                       <thead>
                         <tr>
-                          <th scope="col">#</th>
+                          <th scope="col">No</th>
                           <th scope="col">Nama</th>
                           <th scope="col">Email</th>
-                          <th scope="col">Phone Number</th>
-                          <th scope="col">Role</th>
+                          <th scope="col">Telepon</th>
+                          <th scope="col">Alamat</th>
                           <th scope="col">Action</th>
                         </tr>
                       </thead>
@@ -438,7 +440,7 @@ function Dashboard() {
                               <td>{user.name}</td>
                               <td>{user.email}</td>
                               <td>{user.phone}</td>
-                              <td>{user.role}</td>
+                              <td>{user.address}</td>
                               <td>
                                 <button
                                   type="button"
@@ -447,9 +449,9 @@ function Dashboard() {
                                     backgroundColor: "transparent",
                                     border: "0",
                                   }}
-                                  onClick={handleEditUser(user.id)}
+
                                 >
-                                  Edit
+                                <EditUser user ={user}/>
                                 </button>
                               </td>
                             </tr>
@@ -522,9 +524,9 @@ function Dashboard() {
                                   backgroundColor: "transparent",
                                   border: "0",
                                 }}
-                                onClick={handleEditTransaction}
                               >
-                                Edit
+                                <EditTrans trans={trans}/>
+
                               </button>
                             </td>
                           </tr>
