@@ -10,6 +10,7 @@ import Pickup from "../components/Pickup";
 import EdukasiDashboard from "../components/EdukasiDashboard";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import DataTable from "react-data-table-component";
 
 function Dashboard() {
   const [educationPost, setEducationPost] = React.useState([]);
@@ -77,6 +78,56 @@ function Dashboard() {
       });
   };
 
+  const columns = [
+    {
+      name: "Id",
+      selector: (row) => row.id,
+    },
+    {
+      name: "User Id",
+      selector: (row) => row.user_id,
+    },
+    {
+      name: "Price",
+      selector: (row) => row.price,
+    },
+    {
+      name: "Image",
+      selector: (row) => row.image,
+    },
+    {
+      name: "Status",
+      selector: (row) => row.status,
+    },
+    {
+      name: "Action",
+      cell: (row) => <button className="btn btn-dark">Edit</button>,
+    },
+  ];
+
+  const columnsUser = [
+    {
+      name: "Id",
+      selector: (row) => row.id,
+    },
+    {
+      name: "Name",
+      selector: (row) => row.name,
+    },
+    {
+      name: "Email",
+      selector: (row) => row.email,
+    },
+    {
+      name: "Phone",
+      selector: (row) => row.phone,
+    },
+    {
+      name: "Action",
+      cell: (row) => <button className="btn btn-dark">Edit</button>,
+    },
+  ];
+
   const getTransaction = () => {
     axios
       .get(`http://pitrash.masuk.web.id/api/transaction`, {
@@ -86,6 +137,7 @@ function Dashboard() {
       })
       .then((response) => {
         setTransaction(response.data.data);
+        console.log(transaction);
       });
   };
 
@@ -410,131 +462,33 @@ function Dashboard() {
               </div>
             </div>
 
-            {/* Table */}
-            <div className="container mb-4">
-              <div className="row g-0 ms-2 me-2">
+            {/* data tables user*/}
+            <div className="container">
+              <div className="row g-0">
                 <div className="col-lg-12">
-                  <h3 className="manrope mb-2">Users</h3>
-                  <div
-                    className="table-responsive"
-                    style={{ borderRadius: "10px" }}
-                  >
-                    <table className="table table-success table-striped">
-                      <thead>
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Nama</th>
-                          <th scope="col">Email</th>
-                          <th scope="col">Phone Number</th>
-                          <th scope="col">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {users.map((user) => {
-                          return (
-                            <tr key={user.id}>
-                              <th scope="row">{user.id}</th>
-                              <td>{user.name}</td>
-                              <td>{user.email}</td>
-                              <td>{user.phone}</td>
-                              <td>
-                                <button
-                                  type="button"
-                                  className="btn"
-                                  style={{
-                                    backgroundColor: "transparent",
-                                    border: "0",
-                                  }}
-                                  onClick={handleEditUser(user.id)}
-                                >
-                                  Edit
-                                </button>
-                              </td>
-                            </tr>
-                          );
-                        })}
-                      </tbody>
-                    </table>
-                  </div>
+                  <p className="manrope">Users</p>
+                </div>
+                <div className="col-lg-12">
+                  <DataTable
+                    columns={columnsUser}
+                    data={users}
+                    pagination
+                  ></DataTable>
                 </div>
               </div>
             </div>
 
             <div className="container">
-              <div className="row g-0 justify-content-between">
-                <div className="col-lg-11">
-                  <h3 className="manrope mb-2">Transaction</h3>
-                </div>
-                <div className="col-lg-1">
-                  <div className="dropdown">
-                    <button
-                      className="btn btn-dark dropdown-toggle"
-                      type="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      Status
-                    </button>
-                    <ul className="dropdown-menu">
-                      <li>
-                        <Link className="dropdown-item" to="#">
-                          Sudah Dibayar
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to="#">
-                          Belum Dibayar
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to="#">
-                          Menunggu Verifikasi
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
               <div className="row g-0">
                 <div className="col-lg-12">
-                  <table className="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">user id</th>
-                        <th scope="col">price</th>
-                        <th scope="col">image</th>
-                        <th scope="col">status</th>
-                        <th scope="col">action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {transaction.map((trans) => {
-                        return (
-                          <tr key={trans.id}>
-                            <th scope="row">{trans.id}</th>
-                            <td>{trans.user_id}</td>
-                            <td>{trans.price}</td>
-                            <td>{trans.image}</td>
-                            <td>{trans.status}</td>
-                            <td>
-                              <button
-                                type="button"
-                                className="btn"
-                                style={{
-                                  backgroundColor: "transparent",
-                                  border: "0",
-                                }}
-                                onClick={handleEditTransaction}
-                              >
-                                Edit
-                              </button>
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
+                  <p className="manrope">Transaction</p>
+                </div>
+                <div className="col-lg-12">
+                  <DataTable
+                    columns={columns}
+                    data={transaction}
+                    pagination
+                  ></DataTable>
                 </div>
               </div>
             </div>

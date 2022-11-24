@@ -1,4 +1,4 @@
-import "./css/jquery.dataTables.css";
+import "../styles/jquery.css";
 import React, { Component } from "react";
 
 const $ = require("jquery");
