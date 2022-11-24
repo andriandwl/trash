@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import DataTable from "react-data-table-component";
 import NavigationDashboard from "../components/navigation/NavigationDashboard";
 
 function Users() {
@@ -10,6 +11,28 @@ function Users() {
     const useToken = JSON.parse(tokenString);
     return useToken?.token;
   }
+  const columnsUser = [
+    {
+      name: "Id",
+      selector: (row) => row.id,
+    },
+    {
+      name: "Name",
+      selector: (row) => row.name,
+    },
+    {
+      name: "Email",
+      selector: (row) => row.email,
+    },
+    {
+      name: "Phone",
+      selector: (row) => row.phone,
+    },
+    {
+      name: "Action",
+      cell: (row) => <button className="btn btn-dark">Edit</button>,
+    },
+  ];
   const getAllUser = () => {
     axios
       .get(`http://pitrash.masuk.web.id/api/user`, {
@@ -60,30 +83,15 @@ function Users() {
         </div>
         <div className="col-lg-9">
           <div className="container">
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Nama</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Phone Number</th>
-                  <th scope="col">Role</th>
-                </tr>
-              </thead>
-              <tbody>
-                {users.map((user) => {
-                  return (
-                    <tr key={user.id}>
-                      <th scope="row">{user.id}</th>
-                      <td>{user.name}</td>
-                      <td>{user.email}</td>
-                      <td>{user.phone}</td>
-                      <td>{user.role}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+            <div className="row g-0">
+              <div className="col-lg-12">
+                <DataTable
+                  columns={columnsUser}
+                  data={users}
+                  pagination
+                ></DataTable>
+              </div>
+            </div>
           </div>
         </div>
       </div>
