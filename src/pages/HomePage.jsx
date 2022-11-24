@@ -87,7 +87,7 @@ function HomePage() {
                 <h3 className="mb-5 museo text-center">Pengingat</h3>
               </div>
               <div className="row g-0 gap-2 justify-content-center">
-                <div className="col-lg-7 card-group">
+                <div className="col-lg-9 card-group">
                   <div className="card border-light mb-5">
                     <div
                       className="card-header"
@@ -98,36 +98,17 @@ function HomePage() {
                     ></div>
                     <div className="card-body">
                       <p className="card-text text-center">
-                        Pengambilan sampah akan dilakukan pada hari Minggu
+                        Pengambilan sampah akan dilakukan pada hari
+                        <span> </span>
+                        <b>
+                          {history
+                            .filter((item, idx) => idx < 1)
+                            .map((his) => his.Begin_Date)}
+                        </b>
                       </p>
                     </div>
                   </div>
                 </div>
-                {history
-                  .filter((item, idx) => idx < 1)
-                  .map((his) => {
-                    return (
-                      <div className="col-lg-2" key={his.id}>
-                        <div className="card border-light mb-5">
-                          <div
-                            className="card-header"
-                            style={{
-                              backgroundColor: "#5caa47",
-                            }}
-                          >
-                            <p className="card-title text-light ms-4">
-                              {his.Begin_Date}
-                            </p>
-                          </div>
-                          <div className="card-body">
-                            <p className="card-title text-center">
-                              Jadwal Pickup
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
               </div>
               <div className="row g-0 justify-content-center gap-3 mb-3">
                 <div className="col-lg-3">

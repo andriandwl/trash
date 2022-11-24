@@ -10,7 +10,7 @@ import NavigationHome from "../components/navigation/NavigationHome";
 function EdukasiPage() {
   return (
     <>
-      {localStorage.getItem("name") === "admin" ? (
+      {localStorage.getItem("name") === "admin piTrash" ? (
         <Navigation />
       ) : (
         <NavigationHome />

@@ -5,7 +5,7 @@ import NavigationHome from "../components/navigation/NavigationHome";
 function ContactUsPage() {
   return (
     <div>
-      {localStorage.getItem("name") === "admin" ? (
+      {localStorage.getItem("name") === "admin piTrash" ? (
         <Navigation />
       ) : (
         <NavigationHome />

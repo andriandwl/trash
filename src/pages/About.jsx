@@ -14,7 +14,7 @@ import NavigationHome from "../components/navigation/NavigationHome";
 const About = () => {
   return (
     <>
-      {localStorage.getItem("name") === "admin" ? (
+      {localStorage.getItem("name") === "admin piTrash" ? (
         <Navigation />
       ) : (
         <NavigationHome />

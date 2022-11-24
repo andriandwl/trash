@@ -6,12 +6,15 @@ import bgedukasi from "../assets/image/bg-2.jpg";
 import bgnotif from "../assets/image/bg-5.jpg";
 
 import axios from "axios";
+import DataTable from "react-data-table-component";
 import { Link } from "react-router-dom";
+
 import EdukasiDashboard from "../components/EdukasiDashboard";
 import EditTrans from "../components/navigation/EditTrans";
 import EditUser from "../components/navigation/EditUser";
 import Pickup from "../components/Pickup";
 import "../styles/Dashboard.css";
+
 
 function Dashboard() {
   const [educationPost, setEducationPost] = React.useState([]);
@@ -81,6 +84,56 @@ function Dashboard() {
       });
   };
 
+  const columns = [
+    {
+      name: "Id",
+      selector: (row) => row.id,
+    },
+    {
+      name: "User Id",
+      selector: (row) => row.user_id,
+    },
+    {
+      name: "Price",
+      selector: (row) => row.price,
+    },
+    {
+      name: "Image",
+      selector: (row) => row.image,
+    },
+    {
+      name: "Status",
+      selector: (row) => row.status,
+    },
+    {
+      name: "Action",
+      cell: (row) => <button className="btn btn-dark">Edit</button>,
+    },
+  ];
+
+  const columnsUser = [
+    {
+      name: "Id",
+      selector: (row) => row.id,
+    },
+    {
+      name: "Name",
+      selector: (row) => row.name,
+    },
+    {
+      name: "Email",
+      selector: (row) => row.email,
+    },
+    {
+      name: "Phone",
+      selector: (row) => row.phone,
+    },
+    {
+      name: "Action",
+      cell: (row) => <button className="btn btn-dark">Edit</button>,
+    },
+  ];
+
   const getTransaction = () => {
     axios
       .get(`http://pitrash.masuk.web.id/api/transaction`, {
@@ -90,6 +143,7 @@ function Dashboard() {
       })
       .then((response) => {
         setTransaction(response.data.data);
+        console.log(transaction);
       });
   };
 
@@ -412,11 +466,12 @@ function Dashboard() {
               </div>
             </div>
 
-            {/* Table */}
-            <div className="container mb-4">
-              <div className="row g-0 ms-2 me-2">
+            {/* data tables user*/}
+            <div className="container">
+              <div className="row g-0">
                 <div className="col-lg-12">
-                  <h3 className="manrope mb-2">Users</h3>
+
+                <h3 className="manrope mb-2">Users</h3>
                   <div
                     className="table-responsive"
                     style={{ borderRadius: "10px" }}
@@ -460,40 +515,20 @@ function Dashboard() {
                       </tbody>
                     </table>
                   </div>
+
+                  <p className="manrope">Users</p>
+                </div>
+                <div className="col-lg-12">
+                  <DataTable
+                    columns={columnsUser}
+                    data={users}
+                    pagination
+                  ></DataTable>
                 </div>
               </div>
             </div>
 
             <div className="container">
-              <div className="row g-0 justify-content-between">
-                <div className="col-lg-11">
-                  <h3 className="manrope mb-2">Transaction</h3>
-                </div>
-                <div className="col-lg-1">
-                  <div className="dropdown">
-                    <button
-                      className="btn btn-dark dropdown-toggle"
-                      type="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      Status
-                    </button>
-                    <ul className="dropdown-menu">
-                      <li>
-                        <Link className="dropdown-item" to="#">
-                          Paid
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to="#">
-                          Unpaid
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
               <div className="row g-0">
                 <div className="col-lg-12">
                   <table className="table">
@@ -534,6 +569,15 @@ function Dashboard() {
                       })}
                     </tbody>
                   </table>
+
+                  <p className="manrope">Transaction</p>
+                </div>
+                <div className="col-lg-12">
+                  <DataTable
+                    columns={columns}
+                    data={transaction}
+                    pagination
+                  ></DataTable>
                 </div>
               </div>
             </div>

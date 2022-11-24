@@ -1,8 +1,22 @@
 // import axios from "axios";
+import { slice } from "lodash";
 import React from "react";
 import { Link } from "react-router-dom";
 
 function EdukasiDashboard({ educationPost }) {
+  const [isCompleted, setIsCompleted] = React.useState(false);
+  const [index, setIndex] = React.useState(5);
+  const initialPosts = slice(educationPost, 0, index);
+
+  const loadMore = () => {
+    setIndex(index + 5);
+    console.log(index);
+    if (index >= educationPost.length) {
+      setIsCompleted(true);
+    } else {
+      setIsCompleted(false);
+    }
+  };
   return (
     <>
       <div className="d-flex flex-wrap justify-content-between p-3">
@@ -26,7 +40,7 @@ function EdukasiDashboard({ educationPost }) {
       </div>
       <div className="row g-0">
         <div className="container">
-          {educationPost.map((edu) => {
+          {initialPosts.map((edu) => {
             return (
               <div key={edu.id} className="col-lg-12 mb-5">
                 <div className="card profile-card-5">
@@ -40,6 +54,27 @@ function EdukasiDashboard({ educationPost }) {
               </div>
             );
           })}
+        </div>
+      </div>
+      <div className="row g-0 m-2">
+        <div className="col-12 text-center">
+          {isCompleted ? (
+            <button
+              onClick={loadMore}
+              type="button"
+              className="btn btn-success disabled"
+            >
+              That's Itx
+            </button>
+          ) : (
+            <button
+              onClick={loadMore}
+              type="button"
+              className="btn btn-success"
+            >
+              Load More +
+            </button>
+          )}
         </div>
       </div>
     </>
