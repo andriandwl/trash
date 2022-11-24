@@ -10,10 +10,11 @@ function EditProfile({ edit }) {
   const [show, setShow] = useState(false);
   const [save, setSave] = useState(true);
 
-  const navigate = useNavigate();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -27,7 +28,7 @@ function EditProfile({ edit }) {
     return useToken?.token;
   }
 
-  console.log(getAccessToken());
+  // console.log(getAccessToken());
 
   const handleSave = (event) => {
     event.preventDefault();

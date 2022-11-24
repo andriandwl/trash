@@ -101,14 +101,6 @@ function NavigationDashboard() {
                   </li>
                 </ul>
                 <div className="d-flex flex-wrap justify-content-center align-items-center">
-                  <form className="d-flex" role="search">
-                    <input
-                      className="form-control me-3"
-                      type="search"
-                      placeholder="Search"
-                      aria-label="Search"
-                    />
-                  </form>
                   <Link
                     className="me-2"
                     data-bs-toggle="modal"
@@ -124,7 +116,7 @@ function NavigationDashboard() {
                       }}
                     />
                   </Link>
-                  <Link to="/home">
+                  <Link to="/">
                     <img
                       src={account}
                       alt="icon-profile"

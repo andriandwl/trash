@@ -60,7 +60,7 @@ function SchdulingPage() {
               <div className="col-12">
                 {master.map((mas) => {
                   return (
-                    <div className="card card-margin">
+                    <div key={mas.id} className="card card-margin">
                       <div className="card-header no-border">
                         <h5 className="card-title">{mas.day}</h5>
                       </div>
