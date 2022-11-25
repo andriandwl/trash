@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.888aa761.css",
-    "main.js": "/static/js/main.9d15de66.js",
+    "main.js": "/static/js/main.41502638.js",
     "static/media/trs.jpg": "/static/media/trs.259fcff70b8d244b510d.jpg",
     "static/media/edukasi-1.jpg": "/static/media/edukasi-1.fa80aa0ee014aa7b168a.jpg",
     "static/media/save.jpg": "/static/media/save.62ba5907e65e7ff0314d.jpg",
@@ -37,10 +37,10 @@
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
     "main.888aa761.css.map": "/static/css/main.888aa761.css.map",
-    "main.9d15de66.js.map": "/static/js/main.9d15de66.js.map"
+    "main.41502638.js.map": "/static/js/main.41502638.js.map"
   },
   "entrypoints": [
     "static/css/main.888aa761.css",
-    "static/js/main.9d15de66.js"
+    "static/js/main.41502638.js"
   ]
 }

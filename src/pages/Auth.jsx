@@ -5,7 +5,6 @@ import Profile from "./Profile";
 
 function Auth() {
   const { token, setToken } = useToken();
-  console.log(setToken)
 
   if (!token) {
     return (

@@ -3,6 +3,8 @@ import NavigationDashboard from "../components/navigation/NavigationDashboard";
 
 import axios from "axios";
 import { slice } from "lodash";
+import { useSearchParams } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
 function EducationPage() {
   const [educationPost, setEducationPost] = React.useState([]);
@@ -12,6 +14,19 @@ function EducationPage() {
   const [isCompleted, setIsCompleted] = React.useState(false);
   const [index, setIndex] = React.useState(5);
   const initialPosts = slice(educationPost, 0, index);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const keyword = searchParams.get("keyword");
+
+  function changeSearchParams(keyword) {
+    setSearchParams({ keyword });
+  }
+  const [search, setSearch] = React.useState(keyword || "");
+
+  const onKeywordChangeHandler = (search) => {
+    setSearch(search);
+    changeSearchParams(search);
+  };
 
   function getAccessToken() {
     const tokenString = localStorage.getItem("accessToken");
@@ -71,6 +86,14 @@ function EducationPage() {
       });
   };
 
+  const filterPoke = React.useMemo(
+    () =>
+      initialPosts?.filter((edue) => {
+        return edue.title.toLowerCase().includes(search.toLowerCase());
+      }),
+    [initialPosts, search]
+  );
+
   React.useEffect(() => {
     getData();
   }, []);
@@ -100,20 +123,17 @@ function EducationPage() {
               </h3>
             </div>
             <div className="col-lg-8">
-              <div className="input-group mb-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="find ..."
-                />
-              </div>
+              <SearchBar
+                keyword={search}
+                keywordChange={onKeywordChangeHandler}
+              />
             </div>
           </div>
         </div>
         <div className="col-lg-9 mt-4">
           <div className="container">
             <div className="row g-0 justify-content-center">
-              {initialPosts.map((edu) => {
+              {filterPoke.map((edu) => {
                 return (
                   <div key={edu.id} className="col-lg-4 mb-5 card-group">
                     <div className="card profile-card-5">
