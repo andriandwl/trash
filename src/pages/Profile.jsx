@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import EditProfile from "../components/navigation/EditProfile";
 import Navigation from "../components/navigation/Navigation";
 import "../styles/Profile.css";
 
 const Profile = () => {
   const [edit, setIsEdit] = useState([]);
+  const navigate = useNavigate();
 
   function getAccessToken() {
     const tokenString = localStorage.getItem("accessToken");
@@ -24,7 +26,19 @@ const Profile = () => {
       .then((response) => {
         // console.log(response.data.data.author);
         setIsEdit(response.data.data);
-        console.log(response.data.data);
+      });
+  };
+
+  const handleLogout = () => {
+    axios
+      .post(`http://pitrash.masuk.web.id/api/auth/logout`, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
+      })
+      .then((response) => {
+        localStorage.removeItem("accessToken");
+        navigate("/");
       });
   };
 
@@ -62,7 +76,7 @@ const Profile = () => {
                         <li className="mb-2 mb-xl-3 display-28">
                           <span className="display-26 text-black me-2 font-weight-600">
                             Email :
-                          </span>{" "}
+                          </span>
                           {edit.email}
                         </li>
 
@@ -80,6 +94,13 @@ const Profile = () => {
                         </li>
                       </ul>
                       <EditProfile edit={edit} />
+                      <button
+                        type="button"
+                        className="ms-2 btn btn-success"
+                        onClick={handleLogout}
+                      >
+                        Logout
+                      </button>
                     </div>
                   </div>
                 </div>
