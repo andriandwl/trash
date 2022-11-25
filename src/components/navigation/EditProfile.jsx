@@ -125,7 +125,7 @@ function EditProfile({ edit }) {
             <Form.Group controlId="formFile" className="mb-3">
               <Form.Control
                 type="file"
-                accept=".jpg, .png"
+                accept=".jpg, .png, .jpeg"
                 onChange={(e) => setImage(e.target.files[0])}
               />
               <Button onClick={handleSave} variant="primary" className="mt-2">
