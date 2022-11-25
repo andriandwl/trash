@@ -5,30 +5,41 @@ import bguser from "../assets/image/bg-1.jpg";
 import bgedukasi from "../assets/image/bg-2.jpg";
 import bgnotif from "../assets/image/bg-5.jpg";
 
-import axios from "axios";
-import DataTable from "react-data-table-component";
-import { Link } from "react-router-dom";
-
-import EdukasiDashboard from "../components/EdukasiDashboard";
-import EditTrans from "../components/navigation/EditTrans";
-import EditUser from "../components/navigation/EditUser";
-import Pickup from "../components/Pickup";
 import "../styles/Dashboard.css";
-
+import Pickup from "../components/Pickup";
+import EdukasiDashboard from "../components/EdukasiDashboard";
+import axios from "axios";
+import { Link, useSearchParams } from "react-router-dom";
+import DataTable from "react-data-table-component";
+import SearchBarTrans from "../components/SearchBarTrans";
 
 function Dashboard() {
   const [educationPost, setEducationPost] = React.useState([]);
   const [users, setUsers] = React.useState([]);
   const [schedule, setSchdule] = React.useState([]);
   const [incoming, setIncoming] = React.useState([]);
+  const [filteredData, setFilteredData] = React.useState([]);
+  const [statusId, setStatusId] = React.useState("");
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const keyword = searchParams.get("keyword");
+
+  function changeSearchParams(keyword) {
+    setSearchParams({ keyword });
+  }
+  const [search, setSearch] = React.useState(keyword || "");
+
+  const onKeywordChangeHandler = (search) => {
+    setSearch(search);
+    changeSearchParams(search);
+  };
 
   const [image, setImage] = React.useState("");
+  const [statusTransaction, setStatusTransaction] = React.useState("");
   const [poster, setPoster] = React.useState([]);
   const [transaction, setTransaction] = React.useState([]);
 
   const [isLoading, setIsLoading] = React.useState(true);
-
-
 
   function getAccessToken() {
     const tokenString = localStorage.getItem("accessToken");
@@ -45,6 +56,7 @@ function Dashboard() {
       })
       .then((response) => {
         setEducationPost(response.data.data);
+        setFilteredData(response.data.data);
       });
   };
 
@@ -107,7 +119,19 @@ function Dashboard() {
     },
     {
       name: "Action",
-      cell: (row) => <button className="btn btn-dark">Edit</button>,
+      cell: (row) => (
+        <button
+          className="btn btn-dark"
+          onClick={() => {
+            handleEditTransaction(row.id);
+            setStatusTransaction(row.status);
+          }}
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModale"
+        >
+          Edit
+        </button>
+      ),
     },
   ];
 
@@ -130,9 +154,44 @@ function Dashboard() {
     },
     {
       name: "Action",
-      cell: (row) => <button className="btn btn-dark">Edit</button>,
+      cell: (row) => (
+        <button
+          className="btn btn-dark"
+          onClick={() => {
+            handleEditTransaction(row.id);
+          }}
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModale"
+        >
+          Edit
+        </button>
+      ),
     },
   ];
+
+  const handleStatus = () => {
+    console.log(statusId);
+    const formDataEdit = new FormData();
+    formDataEdit.append("status", statusTransaction);
+    axios
+      .post(
+        `http://pitrash.masuk.web.id/api/transaction/${statusId}`,
+        formDataEdit,
+        {
+          headers: {
+            Authorization: `Bearer ${getAccessToken()}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+        setStatusTransaction("");
+      });
+  };
+  const handleEditTransaction = (id) => {
+    setStatusId(id);
+    console.log(id);
+  };
 
   const getTransaction = () => {
     axios
@@ -143,7 +202,6 @@ function Dashboard() {
       })
       .then((response) => {
         setTransaction(response.data.data);
-        console.log(transaction);
       });
   };
 
@@ -176,6 +234,16 @@ function Dashboard() {
         setPoster(response.data.data);
       });
   };
+
+  const handleEditUser = () => {};
+
+  const filterTransaction = React.useMemo(
+    () =>
+      transaction?.filter((edue) => {
+        return edue.status.toLowerCase().includes(search.toLowerCase());
+      }),
+    [transaction, search]
+  );
 
   React.useEffect(() => {
     getData();
@@ -467,57 +535,12 @@ function Dashboard() {
             </div>
 
             {/* data tables user*/}
-            <div className="container">
+            <div className="container mb-4">
               <div className="row g-0">
                 <div className="col-lg-12">
-
-                <h3 className="manrope mb-2">Users</h3>
-                  <div
-                    className="table-responsive"
-                    style={{ borderRadius: "10px" }}
-                  >
-                    <table className="table table-success table-striped">
-                      <thead>
-                        <tr>
-                          <th scope="col">No</th>
-                          <th scope="col">Nama</th>
-                          <th scope="col">Email</th>
-                          <th scope="col">Telepon</th>
-                          <th scope="col">Alamat</th>
-                          <th scope="col">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {users.map((user) => {
-                          return (
-                            <tr key={user.id}>
-                              <th scope="row">{user.id}</th>
-                              <td>{user.name}</td>
-                              <td>{user.email}</td>
-                              <td>{user.phone}</td>
-                              <td>{user.address}</td>
-                              <td>
-                                <button
-                                  type="button"
-                                  className="btn"
-                                  style={{
-                                    backgroundColor: "transparent",
-                                    border: "0",
-                                  }}
-
-                                >
-                                <EditUser user ={user}/>
-                                </button>
-                              </td>
-                            </tr>
-                          );
-                        })}
-                      </tbody>
-                    </table>
-                  </div>
-
                   <p className="manrope">Users</p>
                 </div>
+
                 <div className="col-lg-12">
                   <DataTable
                     columns={columnsUser}
@@ -530,54 +553,71 @@ function Dashboard() {
 
             <div className="container">
               <div className="row g-0">
-                <div className="col-lg-12">
-                  <table className="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">user id</th>
-                        <th scope="col">price</th>
-                        <th scope="col">image</th>
-                        <th scope="col">status</th>
-                        <th scope="col">action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {transaction.map((trans) => {
-                        return (
-                          <tr key={trans.id}>
-                            <th scope="row">{trans.id}</th>
-                            <td>{trans.user_id}</td>
-                            <td>{trans.price}</td>
-                            <td>{trans.image}</td>
-                            <td>{trans.status}</td>
-                            <td>
-                              <button
-                                type="button"
-                                className="btn"
-                                style={{
-                                  backgroundColor: "transparent",
-                                  border: "0",
-                                }}
-                              >
-                                <EditTrans trans={trans}/>
-
-                              </button>
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-
+                <div className="col-lg-8">
                   <p className="manrope">Transaction</p>
+                </div>
+                <div className="col-lg-4">
+                  <SearchBarTrans
+                    keyword={search}
+                    keywordChange={onKeywordChangeHandler}
+                  />
                 </div>
                 <div className="col-lg-12">
                   <DataTable
                     columns={columns}
-                    data={transaction}
+                    data={filterTransaction}
                     pagination
                   ></DataTable>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="modal fade"
+              id="exampleModale"
+              tabIndex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div className="modal-dialog">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h1 className="modal-title fs-5" id="exampleModalLabel">
+                      Modal title
+                    </h1>
+                    <button
+                      type="button"
+                      className="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div className="modal-body">
+                    <form
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        handleStatus();
+                      }}
+                    >
+                      <div className="input-group input-group-sm mb-3">
+                        <span
+                          className="input-group-text"
+                          id="inputGroup-sizing-sm"
+                        >
+                          Status
+                        </span>
+                        <input
+                          type="text"
+                          className="form-control"
+                          aria-label="Sizing example input"
+                          aria-describedby="inputGroup-sizing-sm"
+                          value={statusTransaction}
+                          onChange={(e) => setStatusTransaction(e.target.value)}
+                        />
+                      </div>
+                      <button type="submit">Submit</button>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
