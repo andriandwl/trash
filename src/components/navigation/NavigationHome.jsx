@@ -92,7 +92,7 @@ function NavigationHome() {
                   >
                     {localStorage.getItem("name")}
                   </Link>
-                  <Link to="/profile-user">
+                  <Link to="/profile">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="30"

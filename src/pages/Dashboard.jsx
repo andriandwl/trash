@@ -9,9 +9,10 @@ import "../styles/Dashboard.css";
 import Pickup from "../components/Pickup";
 import EdukasiDashboard from "../components/EdukasiDashboard";
 import axios from "axios";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import DataTable from "react-data-table-component";
 import SearchBarTrans from "../components/SearchBarTrans";
+import EditUser from "../components/navigation/EditUser";
 
 function Dashboard() {
   const [educationPost, setEducationPost] = React.useState([]);
@@ -38,8 +39,9 @@ function Dashboard() {
   const [statusTransaction, setStatusTransaction] = React.useState("");
   const [poster, setPoster] = React.useState([]);
   const [transaction, setTransaction] = React.useState([]);
-
   const [isLoading, setIsLoading] = React.useState(true);
+
+  const navigate = useNavigate();
 
   function getAccessToken() {
     const tokenString = localStorage.getItem("accessToken");
@@ -135,6 +137,18 @@ function Dashboard() {
     },
   ];
 
+  const handleDelete = (id) => {
+    axios
+      .delete(`http://pitrash.masuk.web.id/api/user/${id}`, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
+      })
+      .then((response) => {
+        getAllUser();
+      });
+  };
+
   const columnsUser = [
     {
       name: "Id",
@@ -154,18 +168,20 @@ function Dashboard() {
     },
     {
       name: "Action",
-      cell: (row) => (
-        <button
-          className="btn btn-dark"
-          onClick={() => {
-            handleEditTransaction(row.id);
-          }}
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModale"
-        >
-          Edit
-        </button>
-      ),
+      cell: (row) => {
+        return (
+          <>
+            <EditUser users={row} />
+            <button
+              type="button"
+              onClick={() => handleDelete(row.id)}
+              className="btn border-0"
+            >
+              Delete
+            </button>
+          </>
+        );
+      },
     },
   ];
 
@@ -190,7 +206,6 @@ function Dashboard() {
   };
   const handleEditTransaction = (id) => {
     setStatusId(id);
-    console.log(id);
   };
 
   const getTransaction = () => {

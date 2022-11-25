@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EditProfile from "../components/navigation/EditProfile";
 import Navigation from "../components/navigation/Navigation";
+import NavigationHome from "../components/navigation/NavigationHome";
 import "../styles/Profile.css";
 
 const Profile = () => {
@@ -29,7 +30,7 @@ const Profile = () => {
       });
   };
 
-  const handleLogout = () => {
+  const onLogout = () => {
     axios
       .post(`http://pitrash.masuk.web.id/api/auth/logout`, {
         headers: {
@@ -48,7 +49,11 @@ const Profile = () => {
 
   return (
     <>
-      <Navigation />
+      {localStorage.getItem("name") === "admin piTrash" ? (
+        <Navigation />
+      ) : (
+        <NavigationHome />
+      )}
       <section className="uppage">
         <div className="container bg-light me-5 mt-3">
           <div className="row">
@@ -97,7 +102,7 @@ const Profile = () => {
                       <button
                         type="button"
                         className="ms-2 btn btn-success"
-                        onClick={handleLogout}
+                        onClick={onLogout}
                       >
                         Logout
                       </button>
