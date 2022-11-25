@@ -25,6 +25,7 @@ function EditTrans({ trans }) {
 
   const handleSave = (id) => {
   // console.log(id);
+
     const data = new FormData();
     data.append("status", status);
 
