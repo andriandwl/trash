@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useNavigate } from "react-router-dom";
 
-function EditUser({ user }) {
+function EditUser({ users }) {
   const [show, setShow] = useState(false);
   const [save, setSave] = useState(true);
 
@@ -55,16 +55,16 @@ function EditUser({ user }) {
           setSave(response.data.data);
           console.log(response.data.data);
           alert("berhasil di ubah");
-          navigate('/dashboard')
+          navigate("/dashboard");
         });
     }
   };
 
   return (
     <>
-      <a variant="primary" onClick={handleShow}>
+      <button variant="primary" className="border-0" onClick={handleShow}>
         Edit
-      </a>
+      </button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -72,17 +72,37 @@ function EditUser({ user }) {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={(e) => handleSave(e)}>
-            <Form.Group className="mb-3" >
-              <Form.Control type="email" placeholder="email" defaultValue={user.email} onChange={(e) => setEmail(e.target.value)} />
+            <Form.Group className="mb-3">
+              <Form.Control
+                type="email"
+                placeholder="email"
+                defaultValue={users.email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </Form.Group>
-            <Form.Group className="mb-3" >
-              <Form.Control type="number" placeholder="telepon" defaultValue={user.phone} onChange={(e) => setPhone(e.target.value)} />
+            <Form.Group className="mb-3">
+              <Form.Control
+                type="number"
+                placeholder="telepon"
+                defaultValue={users.phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
             </Form.Group>
-            <Form.Group className="mb-3" >
-              <Form.Control type="text" placeholder="name" defaultValue={user.name} onChange={(e) => setName(e.target.value)} />
+            <Form.Group className="mb-3">
+              <Form.Control
+                type="text"
+                placeholder="name"
+                defaultValue={users.name}
+                onChange={(e) => setName(e.target.value)}
+              />
             </Form.Group>
-            <Form.Group className="mb-3" >
-              <Form.Control type="text" placeholder="alamat" defaultValue={user.address} onChange={(e) => setAdress(e.target.value)} />
+            <Form.Group className="mb-3">
+              <Form.Control
+                type="text"
+                placeholder="alamat"
+                defaultValue={users.address}
+                onChange={(e) => setAdress(e.target.value)}
+              />
             </Form.Group>
 
             <Button onClick={handleSave} variant="primary" className="mt-2">
@@ -102,3 +122,4 @@ function EditUser({ user }) {
 }
 
 export default EditUser;
+
