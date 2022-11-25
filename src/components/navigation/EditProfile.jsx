@@ -32,7 +32,7 @@ function EditProfile({ edit }) {
 
   const handleSave = (event) => {
     event.preventDefault();
-    console.log("clicked");
+    // console.log("clicked");
     const data = new FormData();
     data.append("name", name);
     data.append("address", address);
@@ -59,7 +59,8 @@ function EditProfile({ edit }) {
           setSave(response.data.data);
           console.log(response.data.data);
           alert("berhasil di ubah");
-          navigate("/profile");
+          // navigate("/profile");
+          window.location.reload()
         });
     }
   };
