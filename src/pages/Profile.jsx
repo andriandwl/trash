@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 import EditProfile from "../components/navigation/EditProfile";
 import Navigation from "../components/navigation/Navigation";
+import NavigationHome from "../components/navigation/NavigationHome";
 import "../styles/Profile.css";
 
 const Profile = () => {
@@ -42,32 +43,29 @@ const Profile = () => {
   //       navigate("/");
   //     });
   // };
-  function Logout(){
+  function Logout() {
     Swal.fire({
-      title:"Apakah Anda Yakin?",
-      text:"Anda Akan keluar dari akun anda",
-      icon:"warning",
-      showCancelButton:true,
-      confirmButtonColor:"#3085d5",
-      cancelButtonColor:"#d33",
-      confirmButtonText:"Ya, Keluar",
-    }).then((result)=>{
-      if(result.isConfirmed){
-
+      title: "Apakah Anda Yakin?",
+      text: "Anda Akan keluar dari akun anda",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d5",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ya, Keluar",
+    }).then((result) => {
+      if (result.isConfirmed) {
         Swal.fire("Berhasil!", "Anda telah keluar dari akun Anda", "success");
         deleteToken();
-        navigate("/")
-      }else{
-        return
+        navigate("/");
+      } else {
+        return;
       }
-
-    })
+    });
   }
 
-
-function deleteToken(){
-  return localStorage.clear()
-}
+  function deleteToken() {
+    return localStorage.clear();
+  }
 
   useEffect(() => {
     handleEdit(id);
@@ -75,7 +73,11 @@ function deleteToken(){
 
   return (
     <>
-      <Navigation />
+      {localStorage.getItem("name") === "admin piTrash" ? (
+        <Navigation />
+      ) : (
+        <NavigationHome />
+      )}
       <section className="uppage">
         <div className="container bg-light me-5 mt-3">
           <div className="row">
