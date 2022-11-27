@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import EditProfile from "../components/navigation/EditProfile";
 import Navigation from "../components/navigation/Navigation";
 import NavigationHome from "../components/navigation/NavigationHome";
@@ -30,18 +31,41 @@ const Profile = () => {
       });
   };
 
-  const onLogout = () => {
-    axios
-      .post(`http://pitrash.masuk.web.id/api/auth/logout`, {
-        headers: {
-          Authorization: `Bearer ${getAccessToken()}`,
-        },
-      })
-      .then((response) => {
-        localStorage.removeItem("accessToken");
+  // const handleLogout = () => {
+  //   axios
+  //     .post(`http://pitrash.masuk.web.id/api/auth/logout`, {
+  //       headers: {
+  //         Authorization: `Bearer ${getAccessToken()}`,
+  //       },
+  //     })
+  //     .then((response) => {
+  //       localStorage.removeItem("accessToken");
+  //       navigate("/");
+  //     });
+  // };
+  function Logout() {
+    Swal.fire({
+      title: "Apakah Anda Yakin?",
+      text: "Anda Akan keluar dari akun anda",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d5",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ya, Keluar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Berhasil!", "Anda telah keluar dari akun Anda", "success");
+        deleteToken();
         navigate("/");
-      });
-  };
+      } else {
+        return;
+      }
+    });
+  }
+
+  function deleteToken() {
+    return localStorage.clear();
+  }
 
   useEffect(() => {
     handleEdit(id);
@@ -101,8 +125,8 @@ const Profile = () => {
                       <EditProfile edit={edit} />
                       <button
                         type="button"
-                        className="ms-2 btn btn-success"
-                        onClick={onLogout}
+                        className="ms-2 btn btn-danger"
+                        onClick={Logout}
                       >
                         Logout
                       </button>

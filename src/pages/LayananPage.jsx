@@ -1,7 +1,7 @@
 import React from "react";
-import payment from "../assets/image/payment.png";
-import reminder from "../assets/image/reminder.jpg";
-import schduling from "../assets/image/schduling.jpg";
+import payment from "../assets/image/payment.webp";
+import reminder from "../assets/image/reminder.webp";
+import schduling from "../assets/image/schduling.webp";
 import { Link } from "react-router-dom";
 
 function LayananPage() {
@@ -153,8 +153,10 @@ function LayananPage() {
               Penjadwalan
             </h2>
             <p className="lead">
-              Some great placeholder content for the first featurette here.
-              Imagine some exciting prose here.
+              Penjadwalan, memberikan cara yang efisien untuk menjadwalkan
+              pembayaran dan pickup untuk aktivitas layanan. Mempertimbangkan
+              kesiapan pengumpulan sampah dan perlengkapan untuk merencanakan
+              jadwal yang sesuai.
             </p>
           </div>
           <div className="col-md-5">
@@ -168,9 +170,9 @@ function LayananPage() {
               Pengingat
             </h2>
             <p className="lead">
-              Another featurette? Of course. More placeholder content here to
-              give you an idea of how this layout would work with some actual
-              real-world content in place.
+              Bisa dikatakan sebagai aplikasi yang berfungsi untuk memberi tahu
+              pada hari/waktu itu ada sebuah kegiatan atau hal yang harus
+              dilakukan.
             </p>
           </div>
           <div className="col-md-5 order-md-1">
@@ -184,10 +186,8 @@ function LayananPage() {
               Pembayaran
             </h2>
             <p className="lead">
-              And yes, this is the last block of representative placeholder
-              content. Again, not really intended to be actually read, simply
-              here to give you a better view of what this would look like with
-              some actual content. Your content.
+              Layanan Pembayaran adalah payment service yaitu bentuk layanan
+              yang melaksanakan pesan atau perintah untuk melakukan pembayaran.
             </p>
           </div>
           <div className="col-md-5">

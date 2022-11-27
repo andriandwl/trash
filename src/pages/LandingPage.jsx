@@ -1,9 +1,10 @@
 import React from "react";
 import Navigation from "../components/navigation/Navigation";
 
-import section1 from "../assets/image/section-1.jpg";
-import section2 from "../assets/image/section-2.jpg";
+import section1 from "../assets/image/section-1.webp";
+import section2 from "../assets/image/section-2.webp";
 import edukasi1 from "../assets/image/edukasi-1.jpg";
+import logo from "../assets/image/logor.png";
 import store from "../assets/image/store.png";
 import { Helmet } from "react-helmet-async";
 
@@ -12,7 +13,7 @@ function LandingPage() {
     <div>
       <Helmet>
         <title>Pi Trash</title>
-        <link rel="icon" href="../assets/image/logor.png"></link>
+        <link rel="icon" href={logo} type="image/icon type" />
         <meta
           name="description"
           content="Beginner friendly page for learning React Helmet."
@@ -141,7 +142,7 @@ function LandingPage() {
                     <p className="card-text">
                       Bisa dikatakan sebagai aplikasi yang berfungsi untuk
                       memberi tahu pada hari/waktu itu ada sebuah kegiatan atau
-                      hal yang harus dilakukan
+                      hal yang harus dilakukan.
                     </p>
                   </div>
                 </div>
@@ -152,7 +153,7 @@ function LandingPage() {
                     <p className="card-text">
                       Layanan Pembayaran adalah payment service yaitu bentuk
                       layanan yang melaksanakan pesan atau perintah untuk
-                      melakukan pembayaran
+                      melakukan pembayaran.
                     </p>
                   </div>
                 </div>

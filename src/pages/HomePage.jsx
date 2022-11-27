@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import section1 from "../assets/image/home.png";
+import section1 from "../assets/image/home.webp";
 import store from "../assets/image/store.png";
 import NavigationHome from "../components/navigation/NavigationHome";
 import axios from "axios";
@@ -11,12 +11,26 @@ function HomePage() {
   const [history, setHistory] = React.useState([]);
   const [incoming, setIncoming] = React.useState([]);
   const [education, setEducationPost] = React.useState([]);
+  const [transaction, setTransaction] = React.useState([]);
 
   function getAccessToken() {
     const tokenString = localStorage.getItem("accessToken");
     const useToken = JSON.parse(tokenString);
     return useToken?.token;
   }
+  const id = localStorage.getItem("id");
+  const getTransaction = (id) => {
+    axios
+      .get(`http://pitrash.masuk.web.id/api/transaction`, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
+      })
+      .then((response) => {
+        setTransaction(response.data.data);
+        transaction.filter((item, idx) => item.user_id === id && idx < 1);
+      });
+  };
 
   const getSchdule = () => {
     axios
@@ -45,6 +59,7 @@ function HomePage() {
   useEffect(() => {
     getData();
     getSchdule();
+    getTransaction();
   }, []);
 
   return (
@@ -160,7 +175,7 @@ function HomePage() {
                         <div className="card border-light mb-5">
                           <div className="card-body">
                             <h5 className="card-title text-center">
-                              Rp. 30.000
+                              Rp.30.000
                             </h5>
                           </div>
                         </div>

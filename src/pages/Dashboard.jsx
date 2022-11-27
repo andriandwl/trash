@@ -1,9 +1,9 @@
 import React from "react";
 import NavigationDashboard from "../components/navigation/NavigationDashboard";
 
-import bguser from "../assets/image/bg-1.jpg";
-import bgedukasi from "../assets/image/bg-2.jpg";
-import bgnotif from "../assets/image/bg-5.jpg";
+import bguser from "../assets/image/bg-1.webp";
+import bgedukasi from "../assets/image/bg-2.webp";
+import bgnotif from "../assets/image/bg-5.webp";
 
 import "../styles/Dashboard.css";
 import Pickup from "../components/Pickup";
@@ -185,6 +185,22 @@ function Dashboard() {
     },
   ];
 
+  const handleEditTransaction = (id) => {
+    setStatusId(id);
+  };
+
+  const getTransaction = () => {
+    axios
+      .get(`http://pitrash.masuk.web.id/api/transaction`, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
+      })
+      .then((response) => {
+        setTransaction(response.data.data);
+      });
+  };
+
   const handleStatus = () => {
     console.log(statusId);
     const formDataEdit = new FormData();
@@ -200,23 +216,8 @@ function Dashboard() {
         }
       )
       .then((response) => {
-        console.log(response);
         setStatusTransaction("");
-      });
-  };
-  const handleEditTransaction = (id) => {
-    setStatusId(id);
-  };
-
-  const getTransaction = () => {
-    axios
-      .get(`http://pitrash.masuk.web.id/api/transaction`, {
-        headers: {
-          Authorization: `Bearer ${getAccessToken()}`,
-        },
-      })
-      .then((response) => {
-        setTransaction(response.data.data);
+        getTransaction();
       });
   };
 

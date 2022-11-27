@@ -1,35 +1,35 @@
 {
   "files": {
     "main.css": "/static/css/main.888aa761.css",
-    "main.js": "/static/js/main.41502638.js",
+    "main.js": "/static/js/main.b04bac6e.js",
     "static/media/trs.jpg": "/static/media/trs.259fcff70b8d244b510d.jpg",
     "static/media/edukasi-1.jpg": "/static/media/edukasi-1.fa80aa0ee014aa7b168a.jpg",
     "static/media/save.jpg": "/static/media/save.62ba5907e65e7ff0314d.jpg",
-    "static/media/bg-5.jpg": "/static/media/bg-5.0f8772236142d9827b38.jpg",
-    "static/media/bg-2.jpg": "/static/media/bg-2.8a77e13abf734a665b10.jpg",
-    "static/media/bg-1.jpg": "/static/media/bg-1.032e4d53eb665de3653f.jpg",
-    "static/media/section-2.jpg": "/static/media/section-2.981f9c1ada516ee7491e.jpg",
     "static/media/pictlogin.png": "/static/media/pictlogin.8fadd358be975fc9d12e.png",
     "static/media/api.jpg": "/static/media/api.efe4bb6eccc398fb29ed.jpg",
     "static/media/sam.jpg": "/static/media/sam.f3e2181dac0bf8084c52.jpg",
     "static/media/pict_regis.png": "/static/media/pict_regis.9d49eb3fc32e35fe44b3.png",
-    "static/media/schduling.jpg": "/static/media/schduling.b4661b284b8e9c2d9938.jpg",
-    "static/media/reminder.jpg": "/static/media/reminder.5b54bccf06e1fdfebd5a.jpg",
-    "static/media/home.png": "/static/media/home.50e97880afb8723d0626.png",
-    "static/media/payment.png": "/static/media/payment.d906fa83cfcd85523d32.png",
+    "static/media/bg-5.webp": "/static/media/bg-5.64e8c3094cc9bf8c7dc8.webp",
+    "static/media/bg-2.webp": "/static/media/bg-2.237d9497c716347bf629.webp",
     "static/media/jadwal.png": "/static/media/jadwal.abeb5b080a16a1eae5cc.png",
+    "static/media/bg-1.webp": "/static/media/bg-1.8a930a1ef4ff95a84306.webp",
     "static/media/Manrope-Regular.ttf": "/static/media/Manrope-Regular.25323263b2aac026e777.ttf",
     "static/media/trash.png": "/static/media/trash.ffcb4fc6f93895944048.png",
     "static/media/wisee.png": "/static/media/wisee.53c024daefc2c2fdfa4a.png",
     "static/media/MuseoModerno-Regular.ttf": "/static/media/MuseoModerno-Regular.fa5fa71a011e9aa1d155.ttf",
-    "static/media/section-1.jpg": "/static/media/section-1.54d772db5a08a683d052.jpg",
     "static/media/pohon-removebg-preview.png": "/static/media/pohon-removebg-preview.433c5736ef958e4e4e43.png",
+    "static/media/schduling.webp": "/static/media/schduling.1a7c40244f94f58859a4.webp",
     "static/media/reduse.png": "/static/media/reduse.a7f05918aff518c09329.png",
     "static/media/reduce.png": "/static/media/reduce.d162f9119e9bdbc3ac88.png",
+    "static/media/reminder.webp": "/static/media/reminder.323cf1dee29df82b8329.webp",
     "static/media/store.png": "/static/media/store.2cfa5616f385d9e5fb31.png",
     "static/media/reuse.png": "/static/media/reuse.6942bc650c4cdd7200c3.png",
+    "static/media/section-1.webp": "/static/media/section-1.e3f930635b5c41d51f0f.webp",
+    "static/media/section-2.webp": "/static/media/section-2.1c0e1f3eebe8ac2c6b47.webp",
     "static/media/Wondersong.ttf": "/static/media/Wondersong.e3ffe78e835b8aa025bf.ttf",
     "static/media/perpustakaan.png": "/static/media/perpustakaan.651403830ef406966749.png",
+    "static/media/home.webp": "/static/media/home.abb285d8d1faed7a61d6.webp",
+    "static/media/payment.webp": "/static/media/payment.a13ad32121639f3b44bf.webp",
     "static/media/background3.png": "/static/media/background3.0a6b64bb95ad7ff3a8b7.png",
     "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
@@ -37,10 +37,10 @@
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
     "main.888aa761.css.map": "/static/css/main.888aa761.css.map",
-    "main.41502638.js.map": "/static/js/main.41502638.js.map"
+    "main.b04bac6e.js.map": "/static/js/main.b04bac6e.js.map"
   },
   "entrypoints": [
     "static/css/main.888aa761.css",
-    "static/js/main.41502638.js"
+    "static/js/main.b04bac6e.js"
   ]
 }
