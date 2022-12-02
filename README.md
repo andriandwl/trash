@@ -4,6 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+## DEMO Application
+http://ptrash.my.id
+
 In the project directory, you can run:
 
 ### `npm start`
