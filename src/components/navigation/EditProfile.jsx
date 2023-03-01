@@ -10,10 +10,11 @@ function EditProfile({ edit }) {
   const [show, setShow] = useState(false);
   const [save, setSave] = useState(true);
 
-  const navigate = useNavigate();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -27,11 +28,11 @@ function EditProfile({ edit }) {
     return useToken?.token;
   }
 
-  console.log(getAccessToken());
+  // console.log(getAccessToken());
 
   const handleSave = (event) => {
     event.preventDefault();
-    console.log("clicked");
+    // console.log("clicked");
     const data = new FormData();
     data.append("name", name);
     data.append("address", address);
@@ -58,7 +59,8 @@ function EditProfile({ edit }) {
           setSave(response.data.data);
           console.log(response.data.data);
           alert("berhasil di ubah");
-          navigate("/profile");
+          // navigate("/profile");
+          window.location.reload()
         });
     }
   };
@@ -124,7 +126,7 @@ function EditProfile({ edit }) {
             <Form.Group controlId="formFile" className="mb-3">
               <Form.Control
                 type="file"
-                accept=".jpg, .png"
+                accept=".jpg, .png, .jpeg"
                 onChange={(e) => setImage(e.target.files[0])}
               />
               <Button onClick={handleSave} variant="primary" className="mt-2">
